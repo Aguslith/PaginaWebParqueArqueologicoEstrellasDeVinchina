@@ -192,6 +192,55 @@ const App = () => {
                 </div>
             </section>
 
+            {/* Inquiry Form Section */}
+            <section id="contacto" className="bg-white">
+                <div className="container">
+                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                        <motion.div 
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <span className="section-tag" style={{ textAlign: 'left' }}>Consulta Arqueológica</span>
+                            <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '30px' }}>¿Deseas saber más?</h2>
+                            <p className="text-secondary-color leading-relaxed mb-8">
+                                Si estás planeando una visita académica o turística al Parque Arqueológico Estrellas de Vinchina, 
+                                nuestro equipo puede brindarte información detallada sobre los accesos, clima y guías autorizados.
+                            </p>
+                            <div className="flex flex-col gap-6">
+                                <div className="flex items-center gap-4">
+                                    <div className="p-3 bg-light rounded-full text-primary-color">
+                                        <MapPin size={20} />
+                                    </div>
+                                    <div>
+                                        <span className="block text-xs font-bold uppercase tracking-widest opacity-50">Ubicación</span>
+                                        <span className="text-sm font-bold">Vinchina, La Rioja, Argentina</span>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4">
+                                    <div className="p-3 bg-light rounded-full text-primary-color">
+                                        <Star size={20} />
+                                    </div>
+                                    <div>
+                                        <span className="block text-xs font-bold uppercase tracking-widest opacity-50">Patrimonio</span>
+                                        <span className="text-sm font-bold">Registro Nacional de Sitios Arqueológicos</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        <motion.div 
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="p-10 bg-white border border-border-color shadow-2xl rounded-2xl"
+                        >
+                            <InquiryForm />
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
             {/* Location & Map Section */}
             <section id="ubicacion">
                 <div className="container">
@@ -229,9 +278,9 @@ const App = () => {
                             <span className="logo-text" style={{ color: 'white' }}>VINCHINA</span>
                         </div>
                         <div className="flex gap-10 text-xs font-bold tracking-widest">
-                            <a href="#" className="hover:text-primary-color transition-colors">YACIMIENTO</a>
-                            <a href="#" className="hover:text-primary-color transition-colors">PARQUE</a>
-                            <a href="#" className="hover:text-primary-color transition-colors">CAPAYANES</a>
+                            <a href="#experiencia" className="hover:text-primary-color transition-colors">YACIMIENTO</a>
+                            <a href="#geoglifos" className="hover:text-primary-color transition-colors">GALERÍA</a>
+                            <a href="#contacto" className="hover:text-primary-color transition-colors">CONTACTO</a>
                         </div>
                     </div>
                     <p className="footer-copy">
@@ -242,5 +291,82 @@ const App = () => {
         </div>
     );
 };
+
+const InquiryForm = () => {
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [status, setStatus] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('sending');
+        try {
+            await axios.post('http://localhost:5000/api/inquire', formData);
+            setStatus('success');
+            setFormData({ name: '', email: '', message: '' });
+        } catch (error) {
+            console.error(error);
+            setStatus('error');
+        }
+    };
+
+    if (status === 'success') {
+        return (
+            <div className="text-center py-10">
+                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Send size={30} />
+                </div>
+                <h3 className="text-2xl font-serif mb-4">¡Mensaje Recibido!</h3>
+                <p className="text-secondary-color">Gracias por tu interés. Nos pondremos en contacto pronto.</p>
+                <button onClick={() => setStatus('')} className="mt-8 text-primary-color font-bold uppercase tracking-widest text-xs">Enviar otro mensaje</button>
+            </div>
+        );
+    }
+
+    return (
+        <form onSubmit={handleSubmit} className="inquiry-form">
+            <div className="form-group mb-6">
+                <label className="block text-[0.65rem] font-bold uppercase tracking-widest text-secondary-color/50 mb-2">NOMBRE COMPLETO</label>
+                <input 
+                    type="text" 
+                    required 
+                    className="form-input"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                />
+            </div>
+            <div className="form-group mb-6">
+                <label className="block text-[0.65rem] font-bold uppercase tracking-widest text-secondary-color/50 mb-2">CORREO ELECTRÓNICO</label>
+                <input 
+                    type="email" 
+                    required 
+                    className="form-input"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                />
+            </div>
+            <div className="form-group mb-8">
+                <label className="block text-[0.65rem] font-bold uppercase tracking-widest text-secondary-color/50 mb-2">CONSULTA</label>
+                <textarea 
+                    required 
+                    rows="4" 
+                    className="form-input"
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                ></textarea>
+            </div>
+            <button 
+                type="submit" 
+                disabled={status === 'sending'}
+                className="btn-red w-full justify-center"
+            >
+                {status === 'sending' ? 'ENVIANDO...' : 'ENVIAR CONSULTA'}
+            </button>
+            {status === 'error' && (
+                <p className="mt-4 text-xs text-red-600 font-bold text-center">Error al enviar. Por favor verifica que el servidor esté activo.</p>
+            )}
+        </form>
+    );
+}
+
 
 export default App;

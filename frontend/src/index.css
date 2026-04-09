@@ -19,6 +19,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
@@ -200,6 +204,7 @@ body {
 /* Info Sections */
 section {
   padding: 100px 0;
+  scroll-margin-top: 80px;
 }
 
 .bg-light {
@@ -320,4 +325,72 @@ section {
   opacity: 0.5;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--primary-color);
+}
+
+/* Form Styles */
+.inquiry-form .form-input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-dark);
+  color: var(--secondary-color);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.inquiry-form .form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(211, 47, 47, 0.05);
+}
+
+.inquiry-form textarea.form-input {
+  resize: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.gap-16 {
+  gap: 4rem;
+}
+
+.items-center {
+  align-items: center;
 }
