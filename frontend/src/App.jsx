@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Compass, Calendar, Star, MapPin, ArrowRight, Landmark, Droplets, Moon, Sun, ChevronLeft, ChevronRight, Eye, Shield, Heart } from 'lucide-react';
+import { Compass, Calendar, Star, MapPin, ArrowRight, Landmark, Droplets, Moon, Sun, ChevronLeft, ChevronRight, Eye, Shield, Heart, Menu, X } from 'lucide-react';
 
 const App = () => {
     const [scrolled, setScrolled] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [activeDetailIndex, setActiveDetailIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -155,7 +156,24 @@ const App = () => {
                     <a href="#fauna">Fauna</a>
                     <a href="#ubicacion">Ubicación</a>
                 </div>
+
+                <button 
+                    className="mobile-menu-btn" 
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label="Abrir menú"
+                >
+                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
             </nav>
+
+            {/* Mobile Navigation Drawer */}
+            <div className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
+                <a href="#que-es" onClick={() => setIsMenuOpen(false)}>¿Qué es?</a>
+                <a href="#simbolismo" onClick={() => setIsMenuOpen(false)}>Simbolismo</a>
+                <a href="#geoglifos" onClick={() => setIsMenuOpen(false)}>Geoglifos</a>
+                <a href="#fauna" onClick={() => setIsMenuOpen(false)}>Fauna</a>
+                <a href="#ubicacion" onClick={() => setIsMenuOpen(false)}>Ubicación</a>
+            </div>
 
             {/* Hero Section */}
             <header className="hero">
@@ -169,7 +187,7 @@ const App = () => {
                         >
                             <span className="hero-tag">LA RIOJA • EL LEGADO CAPAYÁN</span>
                             <h1 className="hero-title">
-                                Los Conjuros <br/> <span style={{ color: 'var(--primary-color)' }}>de Piedra</span>
+                                Los Conjuros <br/> <span className="text-primary">de Piedra</span>
                             </h1>
                             <p className="hero-description">
                                 Descubre las "Estrellas de Vinchina", antiguos espejos de agua diseñados por los Capayanes para invocar la lluvia y descifrar el firmamento.
@@ -185,11 +203,11 @@ const App = () => {
                             className="hero-image-visual"
                         >
                             <img src="/external/v1.jpg" alt="Vinchina Panoramic" />
-                            <div className="absolute top-8 right-8 bg-white/90 p-4 border-l-4 border-primary-color shadow-lg flex items-center gap-3">
-                                <Landmark className="text-secondary-color" />
-                                <div className="flex flex-col">
-                                    <span className="text-[0.6rem] font-bold text-secondary-color tracking-widest uppercase">Siglo X - XV</span>
-                                    <span className="text-xs font-bold text-primary-color">PUEBLO CAPAYÁN</span>
+                            <div className="hero-badge">
+                                <Landmark size={24} className="hero-badge-icon" />
+                                <div className="hero-badge-text">
+                                    <span className="hero-badge-subtitle">Siglo X - XV</span>
+                                    <span className="hero-badge-title">PUEBLO CAPAYÁN</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -200,26 +218,25 @@ const App = () => {
             {/* Section: ¿Qué es Pacha Khuyay? */}
             <section id="que-es" className="bg-white">
                 <div className="container">
-                    <div className="grid md:grid-cols-12 gap-16 items-center">
+                    <div className="purpose-grid">
                         <motion.div 
-                            className="md:col-span-5"
+                            className="purpose-content"
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <span className="section-tag" style={{ textAlign: 'left' }}>Propósito e Identidad</span>
-                            <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '20px' }}>
+                            <span className="section-tag">Propósito e Identidad</span>
+                            <h2 className="section-title">
                                 ¿Qué es <br />
-                                <span style={{ color: 'var(--primary-color)' }}>Pacha Khuyay</span>?
+                                <span className="text-primary">Pacha Khuyay</span>?
                             </h2>
-                            <div className="p-6 border-l-4 border-primary-color bg-light rounded-r-xl shadow-sm" style={{ background: 'var(--bg-dark)' }}>
-                                <h3 className="text-xl font-bold tracking-widest text-secondary-color mb-1" style={{ fontFamily: 'var(--font-serif)' }}>PACHA KHUYAY</h3>
-                                <p className="text-sm font-bold text-primary-color uppercase tracking-wider">Amor a la Tierra</p>
+                            <div className="purpose-badge-container">
+                                <h3 className="purpose-badge-title">PACHA KHUYAY</h3>
+                                <p className="purpose-badge-subtitle">Amor a la Tierra</p>
                             </div>
                         </motion.div>
                         <motion.div 
-                            className="md:col-span-7"
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -252,27 +269,26 @@ const App = () => {
                         <span className="section-tag">El Espejo del Cielo</span>
                         <h2 className="section-title">¿Qué simbolizan las Estrellas?</h2>
                     </div>
-                    
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                    <div className="simbolismo-grid">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <div className="p-10 bg-white shadow-xl rounded-2xl border-t-8 border-primary-color">
-                                <div className="flex gap-4 mb-6">
-                                    <Droplets className="text-primary-color" size={40} />
-                                    <h3 className="text-2xl font-serif">Conjuros Pluviales</h3>
+                            <div className="simbolismo-card">
+                                <div className="simbolismo-card-header">
+                                    <Droplets className="simbolismo-card-icon" size={40} />
+                                    <h3 className="simbolismo-card-title">Conjuros Pluviales</h3>
                                 </div>
-                                <p className="text-secondary-color leading-relaxed mb-6">
+                                <p className="simbolismo-card-text">
                                     Para los Capayanes, estas estrellas eran <strong>"conjuros pluviales"</strong>. Basados en la magia simpática de que "el agua atrae al agua", 
                                     rellenaban el centro de las estrellas (originalmente de 1.20 metros de profundidad) para invocar la lluvia necesaria para sus cultivos.
                                 </p>
-                                <div className="flex gap-4 mb-6">
-                                    <Moon className="text-secondary-color" size={40} />
-                                    <h3 className="text-2xl font-serif">Reflejos Astrales</h3>
+                                <div className="simbolismo-card-header">
+                                    <Moon className="simbolismo-card-icon secondary" size={40} />
+                                    <h3 className="simbolismo-card-title">Reflejos Astrales</h3>
                                 </div>
-                                <p className="text-secondary-color leading-relaxed">
+                                <p className="simbolismo-card-text">
                                     Al llenarse de agua, las estrellas se convertían en <strong>espejos líquidos</strong> que reflejaban el sol, la luna y las constelaciones, 
                                     permitiendo a los chamanes observar los ciclos celestiales sin levantar la vista.
                                 </p>
@@ -282,13 +298,13 @@ const App = () => {
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="relative"
+                            className="simbolismo-img-container"
                         >
-                            <img src="/external/v4.jpg" className="w-full h-[600px] object-cover rounded-2xl shadow-2xl" alt="Simbolismo" />
-                            <div className="absolute -bottom-10 -left-10 bg-secondary-color text-white p-8 rounded-xl max-w-xs shadow-2xl">
-                                <span className="text-primary-color font-bold text-4xl block mb-2">9</span>
-                                <p className="text-xs uppercase tracking-widest font-bold">Puntas geométricas</p>
-                                <p className="text-sm mt-3 opacity-70">Símbolo de la perfección y el orden cósmico en la cosmogonía Capayán.</p>
+                            <img src="/external/v4.jpg" className="simbolismo-img" alt="Simbolismo" />
+                            <div className="simbolismo-badge">
+                                <span className="simbolismo-badge-number">9</span>
+                                <p className="simbolismo-badge-label">Puntas geométricas</p>
+                                <p className="simbolismo-badge-desc">Símbolo de la perfección y el orden cósmico en la cosmogonía Capayán.</p>
                             </div>
                         </motion.div>
                     </div>
@@ -301,8 +317,8 @@ const App = () => {
                     <div className="section-header-center">
                         <span className="section-tag">Herencia de los Capayanes</span>
                         <h2 className="section-title">Geometría de 9 Puntas</h2>
-                        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-                            <p className="p-regular" style={{ fontSize: '1.2rem', color: 'var(--secondary-color)' }}>
+                        <div className="section-intro-container">
+                            <p className="section-intro-text large">
                                 Ubicadas a solo 200 metros del Río Bermejo, las estrellas fueron construidas con 
                                 piedras de tres colores: <strong>blancas, rojas y azuladas/negras</strong>. 
                                 De las siete estructuras originales, hoy tres han sido fielmente reconstruidas.
@@ -310,27 +326,27 @@ const App = () => {
                         </div>
                     </div>
 
-                    <div className="features-grid" style={{ marginTop: '50px' }}>
-                        <div className="feature-card glass" style={{ borderColor: 'var(--border-color)', background: 'var(--bg-dark)' }}>
-                            <div className="flex justify-center mb-6">
-                                <Landmark className="text-primary-color" size={32} />
+                    <div className="features-grid">
+                        <div className="feature-card">
+                            <div className="feature-card-icon-wrapper">
+                                <Landmark size={32} />
                             </div>
-                            <h3 className="text-center">Parque Arqueológico</h3>
-                            <p className="text-center text-sm">Un área de 2 km de largo protegida para preservar el rastro de la civilización que habitó el valle hasta el siglo XV.</p>
+                            <h3>Parque Arqueológico</h3>
+                            <p>Un área de 2 km de largo protegida para preservar el rastro de la civilización que habitó el valle hasta el siglo XV.</p>
                         </div>
-                        <div className="feature-card glass" style={{ borderColor: 'var(--border-color)', background: 'var(--bg-dark)' }}>
-                            <div className="flex justify-center mb-6">
-                                <Sun className="text-primary-color" size={32} />
+                        <div className="feature-card">
+                            <div className="feature-card-icon-wrapper">
+                                <Sun size={32} />
                             </div>
-                            <h3 className="text-center">Ciclos Solares</h3>
-                            <p className="text-center text-sm">Utilizadas como calendario solar y lunar para determinar los momentos exactos de siembra y cosecha.</p>
+                            <h3>Ciclos Solares</h3>
+                            <p>Utilizadas como calendario solar y lunar para determinar los momentos exactos de siembra y cosecha.</p>
                         </div>
-                        <div className="feature-card glass" style={{ borderColor: 'var(--border-color)', background: 'var(--bg-dark)' }}>
-                            <div className="flex justify-center mb-6">
-                                <Droplets className="text-primary-color" size={32} />
+                        <div className="feature-card">
+                            <div className="feature-card-icon-wrapper">
+                                <Droplets size={32} />
                             </div>
-                            <h3 className="text-center">Magia Simpática</h3>
-                            <p className="text-center text-sm">El uso ritual del agua en el interior de las estrellas como ofrenda para atraer la abundancia hídrica.</p>
+                            <h3>Magia Simpática</h3>
+                            <p>El uso ritual del agua en el interior de las estrellas como ofrenda para atraer la abundancia hídrica.</p>
                         </div>
                     </div>
                 </div>
@@ -346,7 +362,7 @@ const App = () => {
                             <motion.div 
                                 key={i}
                                 whileHover={{ y: -10 }}
-                                className="gallery-item shadow-xl"
+                                className="gallery-item"
                             >
                                 <img src={img.url} alt={img.title} />
                                 <div className="gallery-label">{img.title}</div>
@@ -362,8 +378,8 @@ const App = () => {
                     <div className="section-header-center">
                         <span className="section-tag">Esculturas del Parque</span>
                         <h2 className="section-title">Fauna Autóctona</h2>
-                        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', marginBottom: '50px' }}>
-                            <p className="p-regular" style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                        <div className="section-intro-container">
+                            <p className="section-intro-text">
                                 Recientemente se han incorporado al parque arqueológico esculturas a tamaño real de los animales más representativos de la región andina. Estas obras rinden homenaje a la biodiversidad local y complementan el simbolismo sagrado de las estrellas.
                             </p>
                         </div>
@@ -519,7 +535,7 @@ const App = () => {
                                         </div>
                                         
                                         <div className="heritage-box">
-                                            <div className="flex gap-2 items-center mb-2 text-primary-color">
+                                            <div className="heritage-header">
                                                 <Shield size={16} />
                                                 <h4 className="heritage-title" style={{ margin: 0 }}>Valor Patrimonial</h4>
                                             </div>
@@ -527,8 +543,8 @@ const App = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="fauna-sculpture-note" style={{ marginTop: '30px', background: 'white', padding: '15px 20px', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-                                    <Landmark size={16} className="text-primary-color" style={{ minWidth: '16px' }} />
+                                <div className="fauna-sculpture-note">
+                                    <Landmark size={16} className="text-primary" />
                                     <span><strong>Nota de la Escultura:</strong> {activeAnimal.sculptureNote}</span>
                                 </div>
                             </motion.div>
@@ -546,20 +562,18 @@ const App = () => {
                         <span className="section-tag">Ubicación y Acceso</span>
                         <h2 className="section-title">Valle del Bermejo</h2>
                     </div>
-                    <div className="map-container shadow-2xl">
+                    <div className="map-container">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14000.000000000002!2d-68.2106!3d-28.7517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDQ1JDA2LjEiUyA2OMKwMTInMzguMiJX!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" 
-                            width="100%" 
-                            height="100%" 
-                            style={{ border: 0 }} 
+                            className="map-iframe"
                             allowFullScreen="" 
                             loading="lazy" 
                         ></iframe>
                         <div className="map-info-card">
                             <h4>Parque Pacha Khuyay</h4>
-                            <p className="text-sm font-bold text-secondary-color mb-4">La Rioja, Vinchina</p>
-                            <p className="text-xs text-secondary-color/70 mb-6">Localización: 3 km al NW de San José de Vinchina. Se recomienda visita guiada para interpretar los geoglifos.</p>
-                            <a href="https://www.google.com/maps?q=-28.7517,-68.2106" target="_blank" className="btn-red" style={{ padding: '12px 20px', fontSize: '0.7rem' }}>
+                            <p className="map-info-subtitle">La Rioja, Vinchina</p>
+                            <p className="map-info-text">Localización: 3 km al NW de San José de Vinchina. Se recomienda visita guiada para interpretar los geoglifos.</p>
+                            <a href="https://www.google.com/maps?q=-28.7517,-68.2106" target="_blank" className="btn-red">
                                 CÓMO LLEGAR
                             </a>
                         </div>
@@ -573,12 +587,12 @@ const App = () => {
                     <div className="footer-grid">
                         <div className="navbar-logo">
                             <img src="/logokhuyay.JPG" alt="Logo Parque Pacha Khuyay" className="logo-image" />
-                            <span className="logo-text" style={{ color: 'white' }}>PACHA KHUYAY</span>
+                            <span className="logo-text">PACHA KHUYAY</span>
                         </div>
-                        <div className="flex gap-10 text-xs font-bold tracking-widest">
-                            <a href="#experiencia" className="hover:text-primary-color transition-colors">YACIMIENTO</a>
-                            <a href="#geoglifos" className="hover:text-primary-color transition-colors">GALERÍA</a>
-                            <a href="#fauna" className="hover:text-primary-color transition-colors">FAUNA</a>
+                        <div className="footer-links">
+                            <a href="#que-es">YACIMIENTO</a>
+                            <a href="#geoglifos">GALERÍA</a>
+                            <a href="#fauna">FAUNA</a>
                         </div>
                     </div>
                     <p className="footer-copy">
