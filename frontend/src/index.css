@@ -72,8 +72,11 @@ body {
   color: var(--secondary-color);
 }
 
-.logo-icon {
-  color: var(--primary-color);
+.logo-image {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 4px;
 }
 
 .nav-links {

@@ -88,7 +88,7 @@ const App = () => {
             {/* Navbar */}
             <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
                 <div className="navbar-logo">
-                    <Star className="logo-icon" size={24} fill="currentColor" />
+                    <img src="/logokhuyay.JPG" alt="Logo Parque Pacha Khuyay" className="logo-image" />
                     <span className="logo-text">PARQUE PACHA KHUYAY</span>
                 </div>
                 
@@ -397,7 +397,7 @@ const App = () => {
                 <div className="container">
                     <div className="footer-grid">
                         <div className="navbar-logo">
-                            <Star className="logo-icon" size={30} fill="currentColor" />
+                            <img src="/logokhuyay.JPG" alt="Logo Parque Pacha Khuyay" className="logo-image" />
                             <span className="logo-text" style={{ color: 'white' }}>PACHA KHUYAY</span>
                         </div>
                         <div className="flex gap-10 text-xs font-bold tracking-widest">
