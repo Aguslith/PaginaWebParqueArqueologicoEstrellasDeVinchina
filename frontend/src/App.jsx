@@ -93,6 +93,7 @@ const App = () => {
                 </div>
                 
                 <div className="nav-links">
+                    <a href="#que-es">¿Qué es?</a>
                     <a href="#experiencia">Historia</a>
                     <a href="#simbolismo">Simbolismo</a>
                     <a href="#geoglifos">Geoglifos</a>
@@ -144,6 +145,54 @@ const App = () => {
                     </div>
                 </div>
             </header>
+
+            {/* Section: ¿Qué es Pacha Khuyay? */}
+            <section id="que-es" className="bg-white">
+                <div className="container">
+                    <div className="grid md:grid-cols-12 gap-16 items-center">
+                        <motion.div 
+                            className="md:col-span-5"
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <span className="section-tag" style={{ textAlign: 'left' }}>Propósito e Identidad</span>
+                            <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '20px' }}>
+                                ¿Qué es <br />
+                                <span style={{ color: 'var(--primary-color)' }}>Pacha Khuyay</span>?
+                            </h2>
+                            <div className="p-6 border-l-4 border-primary-color bg-light rounded-r-xl shadow-sm" style={{ background: 'var(--bg-dark)' }}>
+                                <h3 className="text-xl font-bold tracking-widest text-secondary-color mb-1" style={{ fontFamily: 'var(--font-serif)' }}>PACHA KHUYAY</h3>
+                                <p className="text-sm font-bold text-primary-color uppercase tracking-wider">Amor a la Tierra</p>
+                            </div>
+                        </motion.div>
+                        <motion.div 
+                            className="md:col-span-7"
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <p className="que-es-text">
+                                <strong>PACHA KHUYAY</strong>, en lengua quechua significa <strong>AMOR A LA TIERRA</strong>. Es el nombre que elegimos para el nuevo portal de ingreso a Vinchina, un proyecto que ya está concretándose y estamos convencidos de que, una vez concluido, será hermoso y le cambiará la fisonomía a la entrada de nuestra localidad. Será el orgullo de nuestro pueblo, único en la provincia y el país.
+                            </p>
+                            <p className="que-es-paragraph">
+                                En este espacio se representará a la biodiversidad andina, es decir su fauna y su flora, por cuanto tiene un fin turístico y también educativo, que va a generar conciencia en la gente sobre la preservación del medio ambiente y el cuidado de las especies autóctonas.
+                            </p>
+                            <p className="que-es-paragraph">
+                                Cada uno de nuestros animalitos está bellamente realizado en esculturas de hierro y cemento en tamaño real; son verdaderas obras de arte que quedarán para siempre, integrando el patrimonio cultural de nuestro pueblo.
+                            </p>
+                            <p className="que-es-paragraph">
+                                Esta obra es un legado de amor a nuestra tierra, la que nos vio nacer y crecer. Es una obra que vamos a realizarla entre toda la comunidad, poniendo cada uno de nosotros una piedra. Ese es el ideario que perseguimos: que sea una obra de todos para todos, en la cual todos participemos como hijos de esta tierra. Es una obra distinta: no viene enlatada ni realizada por empresa alguna, ni tan siquiera por el estado; es una realización de la comunidad, al menos así la concebimos.
+                            </p>
+                            <p className="que-es-paragraph">
+                                Es un tributo y un homenaje que le debemos a nuestra naturaleza y a la biodiversidad autóctona, y será nuestra carta de presentación ante quienes nos visitan, que sin duda van a detenerse allí a conocer la fauna y flora de Vinchina.
+                            </p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
 
             {/* New Symbolism Section: Mirror of Heaven */}
             <section id="simbolismo" className="bg-light">

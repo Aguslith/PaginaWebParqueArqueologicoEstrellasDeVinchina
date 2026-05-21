@@ -79,6 +79,24 @@ body {
   border-radius: 4px;
 }
 
+.que-es-text {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.que-es-paragraph {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.que-es-paragraph:last-child {
+  margin-bottom: 0;
+}
+
 .nav-links {
   display: none;
 }
