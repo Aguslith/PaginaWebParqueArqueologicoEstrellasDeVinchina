@@ -20,6 +20,69 @@ const App = () => {
         { url: '/external/v4.jpg', title: 'Geometría Sagrada' }
     ];
 
+    const faunaData = [
+        {
+            id: 1,
+            name: "Cóndor Andino",
+            scientificName: "Vultur gryphus",
+            quechuaName: "Kuntur",
+            image: "/animalesautoctonos/animal1.jpg",
+            symbolism: "Mensajero cósmico y guardián de las alturas",
+            description: "El ave voladora más grande del mundo, con una envergadura de hasta 3 metros. Es un símbolo de libertad y espiritualidad para los pueblos andinos, actuando como nexo entre el mundo terrenal y el celestial.",
+            details: [
+                "Envergadura: hasta 3.2 metros",
+                "Hábitat: Cumbres andinas y valles rocosos",
+                "Función ecológica: Limpieza y equilibrio del ecosistema (carroñero)"
+            ],
+            sculptureNote: "Escultura 'Pacha Khuyay' (Amar a la Tierra), inaugurada en 2026 como homenaje y bienvenida al parque."
+        },
+        {
+            id: 2,
+            name: "Águila Mora",
+            scientificName: "Geranoaetus melanoleucus",
+            quechuaName: "Anka",
+            image: "/animalesautoctonos/animal2.jpg",
+            symbolism: "Agudeza visual, soberanía y poder",
+            description: "Majestuosa ave rapaz de gran tamaño que habita en las laderas andinas y zonas de estepa. Destaca por su planeo imponente y su plumaje característico gris azulado con pecho blanco.",
+            details: [
+                "Alimentación: Pequeños mamíferos y reptiles",
+                "Comportamiento: Vuelos térmicos en solitario o en parejas",
+                "Presencia: Frecuente en los cielos de Vinchina"
+            ],
+            sculptureNote: "Representada en su pose clásica de acecho sobre un tronco nativo, vigilando los horizontes del parque."
+        },
+        {
+            id: 3,
+            name: "Puma y Taruca",
+            scientificName: "Puma concolor & Hippocamelus antisensis",
+            quechuaName: "Puma & Taruka",
+            image: "/animalesautoctonos/animal3.jpg",
+            symbolism: "Fuerza, sigilo y biodiversidad de altura",
+            description: "Dos especies clave del ecosistema montañoso riojano. El puma representa al depredador tope y solitario, mientras que la taruca (ciervo andino) representa la agilidad y adaptación a los faldeos rocosos escarpados.",
+            details: [
+                "Puma: Felino adaptable, gran regulador de poblaciones silvestres",
+                "Taruca: Ciervo autóctono declarado Monumento Natural Nacional",
+                "Interacción: Relación ecológica clásica de depredador-presa en los Andes"
+            ],
+            sculptureNote: "Esculturas detalladas que muestran a ambas especies integradas en la geografía del yacimiento."
+        },
+        {
+            id: 4,
+            name: "Suri y Vicuña",
+            scientificName: "Rhea pennata & Vicugna vicugna",
+            quechuaName: "Suri & Wikuña",
+            image: "/animalesautoctonos/animal4.jpg",
+            symbolism: "Adaptabilidad extrema y elegancia andina",
+            description: "Especies emblemáticas del altiplano y la puna de La Rioja. El suri (ñandú petiso) es una gran ave corredora no voladora, mientras que la vicuña destaca por poseer una de las fibras animales más finas y valiosas del planeta.",
+            details: [
+                "Suri: Capacidad de correr a alta velocidad en terrenos pedregosos",
+                "Vicuña: Especie insignia de la Reserva Provincial Laguna Brava",
+                "Adaptación: Pelaje denso que las protege de vientos y frío extremo"
+            ],
+            sculptureNote: "Figuras a tamaño real situadas en los flancos de la estrella ceremonial, enriqueciendo su entorno arqueológico."
+        }
+    ];
+
     return (
         <div className="app-container">
             {/* Navbar */}
@@ -33,6 +96,7 @@ const App = () => {
                     <a href="#experiencia">Historia</a>
                     <a href="#simbolismo">Simbolismo</a>
                     <a href="#geoglifos">Geoglifos</a>
+                    <a href="#fauna">Fauna</a>
                     <a href="#ubicacion">Ubicación</a>
                 </div>
 
@@ -192,6 +256,65 @@ const App = () => {
                 </div>
             </section>
 
+            {/* Fauna Section */}
+            <section id="fauna" className="bg-white">
+                <div className="container">
+                    <div className="section-header-center">
+                        <span className="section-tag">Esculturas del Parque</span>
+                        <h2 className="section-title">Fauna Autóctona</h2>
+                        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', marginBottom: '50px' }}>
+                            <p className="p-regular" style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                                Recientemente se han incorporado al parque arqueológico esculturas a tamaño real de los animales más representativos de la región andina. Estas obras rinden homenaje a la biodiversidad local y complementan el simbolismo sagrado de las estrellas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="fauna-grid">
+                        {faunaData.map((animal) => (
+                            <motion.div 
+                                key={animal.id}
+                                className="fauna-card shadow-lg"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: animal.id * 0.1 }}
+                            >
+                                <div className="fauna-image-container">
+                                    <img src={animal.image} alt={animal.name} className="fauna-image" />
+                                    <div className="fauna-badge">
+                                        <span className="fauna-quechua">{animal.quechuaName}</span>
+                                    </div>
+                                </div>
+                                <div className="fauna-content">
+                                    <span className="fauna-scientific">{animal.scientificName}</span>
+                                    <h3 className="fauna-name">{animal.name}</h3>
+                                    <div className="fauna-symbolism-tag">
+                                        <Star size={12} fill="currentColor" className="text-primary-color" style={{ marginRight: '6px' }} />
+                                        <span>{animal.symbolism}</span>
+                                    </div>
+                                    <p className="fauna-desc">{animal.description}</p>
+                                    <div className="fauna-details">
+                                        <h4 className="fauna-details-title">Características Clave:</h4>
+                                        <ul>
+                                            {animal.details.map((detail, idx) => (
+                                                <li key={idx}>
+                                                    <span className="bullet-point">•</span>
+                                                    <span>{detail}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className="fauna-sculpture-note">
+                                        <Landmark size={14} className="text-primary-color" style={{ minWidth: '14px', marginTop: '3px' }} />
+                                        <span>{animal.sculptureNote}</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Inquiry Form Section */}
             <section id="contacto" className="bg-white">
                 <div className="container">
@@ -280,6 +403,7 @@ const App = () => {
                         <div className="flex gap-10 text-xs font-bold tracking-widest">
                             <a href="#experiencia" className="hover:text-primary-color transition-colors">YACIMIENTO</a>
                             <a href="#geoglifos" className="hover:text-primary-color transition-colors">GALERÍA</a>
+                            <a href="#fauna" className="hover:text-primary-color transition-colors">FAUNA</a>
                             <a href="#contacto" className="hover:text-primary-color transition-colors">CONTACTO</a>
                         </div>
                     </div>
