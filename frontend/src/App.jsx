@@ -118,6 +118,7 @@ const App = () => {
             scientificName: "Phoenicoparrus andinus",
             type: "Ave acuática",
             image: "/animalesautoctonos/animal6.jpeg",
+            objectPosition: "top",
             habitat: "Lagunas altoandinas.",
             feeding: "Algas y microorganismos.",
             features: "Plumaje rosado y patas largas.",
@@ -408,7 +409,7 @@ const App = () => {
                                                 transition={{ duration: 0.4 }}
                                             >
                                                 <div className="fauna-image-container">
-                                                    <img src={animal.image} alt={animal.name} className="fauna-image" />
+                                                    <img src={animal.image} alt={animal.name} className="fauna-image" style={{ objectPosition: animal.objectPosition || 'center' }} />
                                                     <div className="fauna-badge">
                                                         <span>{animal.type}</span>
                                                     </div>
