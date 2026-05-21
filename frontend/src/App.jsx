@@ -89,7 +89,7 @@ const App = () => {
             <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
                 <div className="navbar-logo">
                     <Star className="logo-icon" size={24} fill="currentColor" />
-                    <span className="logo-text">ESTRELLAS DE VINCHINA</span>
+                    <span className="logo-text">PARQUE PACHA KHUYAY</span>
                 </div>
                 
                 <div className="nav-links">
@@ -327,7 +327,7 @@ const App = () => {
                             <span className="section-tag" style={{ textAlign: 'left' }}>Consulta Arqueológica</span>
                             <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '30px' }}>¿Deseas saber más?</h2>
                             <p className="text-secondary-color leading-relaxed mb-8">
-                                Si estás planeando una visita académica o turística al Parque Arqueológico Estrellas de Vinchina, 
+                                Si estás planeando una visita académica o turística al Parque Arqueológico Pacha Khuyay, 
                                 nuestro equipo puede brindarte información detallada sobre los accesos, clima y guías autorizados.
                             </p>
                             <div className="flex flex-col gap-6">
@@ -381,7 +381,7 @@ const App = () => {
                             loading="lazy" 
                         ></iframe>
                         <div className="map-info-card">
-                            <h4>Parque Arqueológico</h4>
+                            <h4>Parque Pacha Khuyay</h4>
                             <p className="text-sm font-bold text-secondary-color mb-4">La Rioja, Vinchina</p>
                             <p className="text-xs text-secondary-color/70 mb-6">Localización: 3 km al NW de San José de Vinchina. Se recomienda visita guiada para interpretar los geoglifos.</p>
                             <a href="https://www.google.com/maps?q=-28.7517,-68.2106" target="_blank" className="btn-red" style={{ padding: '12px 20px', fontSize: '0.7rem' }}>
@@ -398,7 +398,7 @@ const App = () => {
                     <div className="footer-grid">
                         <div className="navbar-logo">
                             <Star className="logo-icon" size={30} fill="currentColor" />
-                            <span className="logo-text" style={{ color: 'white' }}>VINCHINA</span>
+                            <span className="logo-text" style={{ color: 'white' }}>PACHA KHUYAY</span>
                         </div>
                         <div className="flex gap-10 text-xs font-bold tracking-widest">
                             <a href="#experiencia" className="hover:text-primary-color transition-colors">YACIMIENTO</a>
@@ -408,7 +408,7 @@ const App = () => {
                         </div>
                     </div>
                     <p className="footer-copy">
-                        © 2026 Registro Arqueológico Estrellas de Vinchina. Información basada en Prensa Mercosur.
+                        © 2026 Parque Arqueológico Pacha Khuyay. Información basada en Prensa Mercosur.
                     </p>
                 </div>
             </footer>
