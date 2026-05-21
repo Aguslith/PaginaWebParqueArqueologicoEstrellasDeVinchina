@@ -39,10 +39,10 @@ const App = () => {
     };
 
     const images = [
-        { url: '/external/v1.jpg', title: 'Panorámica de las Estrellas' },
-        { url: '/external/v2.jpg', title: 'Detalle Lítico (Capayanes)' },
-        { url: '/external/v3.jpg', title: 'Estrella de 9 Puntas' },
-        { url: '/external/v4.jpg', title: 'Geometría Sagrada' }
+        { url: 'external/v1.jpg', title: 'Panorámica de las Estrellas' },
+        { url: 'external/v2.jpg', title: 'Detalle Lítico (Capayanes)' },
+        { url: 'external/v3.jpg', title: 'Estrella de 9 Puntas' },
+        { url: 'external/v4.jpg', title: 'Geometría Sagrada' }
     ];
 
     const faunaData = [
@@ -51,7 +51,7 @@ const App = () => {
             name: "Cóndor Andino",
             scientificName: "Vultur gryphus",
             type: "Ave carroñera",
-            image: "/animalesautoctonos/animal1.jpg",
+            image: "animalesautoctonos/condor.jpeg",
             habitat: "Cordillera de los Andes, quebradas y zonas de alta montaña.",
             feeding: "Carroña y restos de animales.",
             features: "Una de las aves voladoras más grandes del mundo. Planea largas distancias aprovechando las corrientes térmicas.",
@@ -64,7 +64,7 @@ const App = () => {
             name: "Águila Mora",
             scientificName: "Geranoaetus melanoleucus",
             type: "Ave rapaz",
-            image: "/animalesautoctonos/animal2.jpg",
+            image: "animalesautoctonos/aguilamora.jpeg",
             habitat: "Montañas y zonas abiertas.",
             feeding: "Roedores y reptiles.",
             features: "Gran visión y vuelo imponente.",
@@ -77,7 +77,7 @@ const App = () => {
             name: "Puma",
             scientificName: "Puma concolor",
             type: "Mamífero carnívoro",
-            image: "/animalesautoctonos/animal3.jpeg",
+            image: "animalesautoctonos/puma.jpeg",
             habitat: "Montañas y quebradas.",
             feeding: "Mamíferos pequeños y medianos.",
             features: "Gran cazador, silencioso y adaptable.",
@@ -90,7 +90,7 @@ const App = () => {
             name: "Suri",
             scientificName: "Rhea pennata",
             type: "Ave corredora",
-            image: "/animalesautoctonos/animal4.jpg",
+            image: "animalesautoctonos/suri.jpeg",
             habitat: "Puna y estepas abiertas.",
             feeding: "Semillas, hierbas e insectos.",
             features: "No vuela y puede correr a gran velocidad.",
@@ -103,7 +103,7 @@ const App = () => {
             name: "Vicuña",
             scientificName: "Vicugna vicugna",
             type: "Mamífero herbívoro",
-            image: "/animalesautoctonos/animal5.jpeg",
+            image: "animalesautoctonos/vicuna.jpeg",
             habitat: "Puna y alta montaña andina.",
             feeding: "Hierbas y pastos de altura.",
             features: "Posee una de las fibras más finas del mundo.",
@@ -116,8 +116,8 @@ const App = () => {
             name: "Flamenco Andino",
             scientificName: "Phoenicoparrus andinus",
             type: "Ave acuática",
-            image: "/animalesautoctonos/animal6.jpeg",
-            objectPosition: "top",
+            image: "animalesautoctonos/flamenco.jpeg",
+            objectPosition: "center",
             habitat: "Lagunas altoandinas.",
             feeding: "Algas y microorganismos.",
             features: "Plumaje rosado y patas largas.",
@@ -130,7 +130,7 @@ const App = () => {
             name: "Zorro",
             scientificName: "Lycalopex culpaeus",
             type: "Mamífero omnívoro",
-            image: "/animalesautoctonos/animal7.jpeg",
+            image: "animalesautoctonos/zorro.jpeg",
             habitat: "Zonas áridas y montañosas.",
             feeding: "Roedores, frutos e insectos.",
             features: "Astuto, veloz y adaptable.",
@@ -145,7 +145,7 @@ const App = () => {
             {/* Navbar */}
             <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
                 <div className="navbar-logo">
-                    <img src="/logokhuyay.JPG" alt="Logo Parque Pacha Khuyay" className="logo-image" />
+                    <img src="logokhuyay.JPG" alt="Logo Parque Pacha Khuyay" className="logo-image" />
                     <span className="logo-text">PARQUE PACHA KHUYAY</span>
                 </div>
                 
@@ -202,7 +202,7 @@ const App = () => {
                             transition={{ duration: 1.2 }}
                             className="hero-image-visual"
                         >
-                            <img src="/external/v1.jpg" alt="Vinchina Panoramic" />
+                            <img src="external/v1.jpg" alt="Vinchina Panoramic" />
                             <div className="hero-badge">
                                 <Landmark size={24} className="hero-badge-icon" />
                                 <div className="hero-badge-text">
@@ -300,7 +300,7 @@ const App = () => {
                             viewport={{ once: true }}
                             className="simbolismo-img-container"
                         >
-                            <img src="/external/v4.jpg" className="simbolismo-img" alt="Simbolismo" />
+                            <img src="external/v4.jpg" className="simbolismo-img" alt="Simbolismo" />
                             <div className="simbolismo-badge">
                                 <span className="simbolismo-badge-number">9</span>
                                 <p className="simbolismo-badge-label">Puntas geométricas</p>
@@ -586,7 +586,7 @@ const App = () => {
                 <div className="container">
                     <div className="footer-grid">
                         <div className="navbar-logo">
-                            <img src="/logokhuyay.JPG" alt="Logo Parque Pacha Khuyay" className="logo-image" />
+                            <img src="logokhuyay.JPG" alt="Logo Parque Pacha Khuyay" className="logo-image" />
                             <span className="logo-text">PACHA KHUYAY</span>
                         </div>
                         <div className="footer-links">

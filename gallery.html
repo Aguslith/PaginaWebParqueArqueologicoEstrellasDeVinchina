@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Esculturas - Pacha Khuyay</title>
+    <style>
+        :root {
+            --bg-color: #0f0f11;
+            --card-bg: #18181c;
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --primary-color: #ef4444;
+            --border-color: #27272a;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+        p.subtitle {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 600px;
+            font-size: 1.1rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .gallery-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+        .image-container {
+            width: 100%;
+            height: 300px;
+            background-color: #0a0a0c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 10px;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .card-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .filename {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .filesize {
+            font-size: 0.875rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pacha Khuyay - Esculturas de Fauna</h1>
+    <p class="subtitle">Visor de control para las imágenes de la carpeta <code>animaleskhuyay</code>. Verifica qué animal está representado en cada escultura original.</p>
+    
+    <div class="gallery-grid">
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal1.jpeg" alt="animal1.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal1.jpeg</div>
+                <div class="filesize">341 KB</div>
+                <div class="description">Flamenco Andino (Vista General)</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal2.jpeg" alt="animal2.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal2.jpeg</div>
+                <div class="filesize">205 KB</div>
+                <div class="description">Lechuza</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal3.jpeg" alt="animal3.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal3.jpeg</div>
+                <div class="filesize">262 KB</div>
+                <div class="description">Águila Mora</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal4.jpeg" alt="animal4.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal4.jpeg</div>
+                <div class="filesize">244 KB</div>
+                <div class="description">Flamenco Andino (Vista Cercana) o Suri? (Verifica si hay un error)</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal5.jpeg" alt="animal5.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal5.jpeg</div>
+                <div class="filesize">324 KB</div>
+                <div class="description">Garza</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal6.jpeg" alt="animal6.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal6.jpeg</div>
+                <div class="filesize">324 KB</div>
+                <div class="description">Pato</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal7.jpeg" alt="animal7.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal7.jpeg</div>
+                <div class="filesize">367 KB</div>
+                <div class="description">Zorro</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal8.jpeg" alt="animal8.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal8.jpeg</div>
+                <div class="filesize">325 KB</div>
+                <div class="description">Vicuña</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal9.jpeg" alt="animal9.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal9.jpeg</div>
+                <div class="filesize">302 KB</div>
+                <div class="description">Puma</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal10.jpeg" alt="animal10.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal10.jpeg</div>
+                <div class="filesize">285 KB</div>
+                <div class="description">Taruca (Ciervo)</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal11.jpeg" alt="animal11.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal11.jpeg</div>
+                <div class="filesize">333 KB</div>
+                <div class="description">Quirquincho</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal12.jpeg" alt="animal12.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal12.jpeg</div>
+                <div class="filesize">180 KB</div>
+                <div class="description">Cóndor Andino</div>
+            </div>
+        </div>
+
+        <div class="gallery-card">
+            <div class="image-container">
+                <img src="animaleskhuyay/animal13.jpeg" alt="animal13.jpeg">
+            </div>
+            <div class="card-info">
+                <div class="filename">animal13.jpeg</div>
+                <div class="filesize">369 KB</div>
+                <div class="description">Tero / Copetona</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
