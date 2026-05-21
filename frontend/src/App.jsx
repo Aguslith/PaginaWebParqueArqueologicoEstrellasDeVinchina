@@ -76,7 +76,7 @@ const App = () => {
             name: "Puma",
             scientificName: "Puma concolor",
             type: "Mamífero carnívoro",
-            image: "/animalesautoctonos/animal3.jpg",
+            image: "/animalesautoctonos/animal3.jpeg",
             habitat: "Montañas y quebradas.",
             feeding: "Mamíferos pequeños y medianos.",
             features: "Gran cazador, silencioso y adaptable.",
