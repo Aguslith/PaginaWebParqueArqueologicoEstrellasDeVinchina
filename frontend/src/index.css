@@ -359,6 +359,26 @@ section {
   color: var(--primary-color);
 }
 
+.footer-socials {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-socials a {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
 /* Form Styles */
 .inquiry-form .form-input {
   width: 100%;

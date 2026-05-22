@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Compass, Calendar, Star, MapPin, ArrowRight, Landmark, Droplets, Moon, Sun, ChevronLeft, ChevronRight, Eye, Shield, Heart, Menu, X } from 'lucide-react';
+import { Compass, Calendar, Star, MapPin, ArrowRight, Landmark, Droplets, Moon, Sun, ChevronLeft, ChevronRight, Eye, Shield, Heart, Menu, X, Facebook, Twitter, Instagram, BookOpen } from 'lucide-react';
 
 const App = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -275,12 +275,14 @@ const App = () => {
                             transition={{ duration: 1 }}
                             className="hero-content"
                         >
-                            <span className="hero-tag">PACHA KHUYAY • AMOR A LA TIERRA, A SU GENTE Y A LA MADRE NATURALEZA</span>
+                            <span className="hero-tag">AMOR A LA TIERRA Y A SU GENTE</span>
                             <h1 className="hero-title">
-                                Pacha <span className="text-primary">Khuyay</span>
+                                Parque Pacha <span className="text-primary">Khuyay</span>
                             </h1>
                             <p className="hero-description">
-                                Es un monumento a la fauna andina, que lo hace único en el país, recientemente inaugurado en el portal de ingreso a Villa San José de Vinchina. Consiste en 22 esculturas de cada especie autóctona de la región, realizadas en hormigón armado en tamaño natural, implantadas en una réplica de las estrellas Capayán, que se encuentran en el otro extremo de la ciudad.
+                                El único monumento a la fauna andina en el país.<br/><br/>
+                                22 esculturas que representan para siempre las especies de la cordillera riojana.<br/><br/>
+                                Descubrí Vinchina. Descubrí Pacha Khuyay.
                             </p>
                             <a href="#fauna" className="btn-red">
                                 VER LAS ESCULTURAS <ArrowRight size={18} />
@@ -312,6 +314,35 @@ const App = () => {
                     </div>
                 </div>
             </header>
+
+            {/* Pilares Section */}
+            <section id="pilares" className="bg-light" style={{ padding: '80px 0' }}>
+                <div className="container">
+                    <div className="features-grid">
+                        <div className="feature-card">
+                            <div className="feature-card-icon-wrapper">
+                                <Compass size={32} />
+                            </div>
+                            <h3>Turístico</h3>
+                            <p>Recorré un paseo a cielo abierto único en Argentina, con vistas a la cordillera y 22 esculturas de fauna andina que convierten a Vinchina en un destino imperdible.</p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-card-icon-wrapper">
+                                <Heart size={32} />
+                            </div>
+                            <h3>Cultural</h3>
+                            <p>Conocé el proyecto colectivo que dejó su huella en el pueblo. Cada obra es un homenaje a la identidad riojana y al vínculo entre la gente y su tierra.</p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-card-icon-wrapper">
+                                <BookOpen size={32} />
+                            </div>
+                            <h3>Educativo</h3>
+                            <p>Aprendé sobre la fauna nativa de los Andes en un espacio pensado para conectar a chicos y grandes con la naturaleza, la historia y el respeto por el entorno.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Section: ¿Qué es Pacha Khuyay? */}
             <section id="que-es" className="bg-white">
@@ -691,6 +722,17 @@ const App = () => {
                             <a href="#que-es">YACIMIENTO</a>
                             <a href="#geoglifos">GALERÍA</a>
                             <a href="#fauna">FAUNA</a>
+                        </div>
+                        <div className="footer-socials">
+                            <a href="https://www.facebook.com/share/p/18Vajpoi9o/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <Facebook size={24} />
+                            </a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X">
+                                <Twitter size={24} />
+                            </a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <Instagram size={24} />
+                            </a>
                         </div>
                     </div>
                     <p className="footer-copy">
