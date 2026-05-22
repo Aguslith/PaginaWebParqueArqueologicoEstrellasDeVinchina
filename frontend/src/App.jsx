@@ -4,8 +4,6 @@ import { Compass, Calendar, Star, MapPin, ArrowRight, Landmark, Droplets, Moon, 
 
 const App = () => {
     const [scrolled, setScrolled] = useState(false);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [activeDetailIndex, setActiveDetailIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -24,20 +22,6 @@ const App = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const handleNext = () => {
-        const step = isMobile ? 1 : 2;
-        const newIndex = (currentIndex + step) % faunaData.length;
-        setCurrentIndex(newIndex);
-        setActiveDetailIndex(newIndex);
-    };
-
-    const handlePrev = () => {
-        const step = isMobile ? 1 : 2;
-        const newIndex = (currentIndex - step + faunaData.length) % faunaData.length;
-        setCurrentIndex(newIndex);
-        setActiveDetailIndex(newIndex);
-    };
-
     const images = [
         { url: 'external/v1.jpg', title: 'Panorámica de las Estrellas' },
         { url: 'external/v2.jpg', title: 'Detalle Lítico (Capayanes)' },
@@ -51,7 +35,7 @@ const App = () => {
             name: "Cóndor Andino",
             scientificName: "Vultur gryphus",
             type: "Ave carroñera",
-            image: "animalesautoctonos/condor.jpeg",
+            image: "EsculturasKhuyay/CondorAndino.jpeg",
             habitat: "Cordillera de los Andes, quebradas y zonas de alta montaña.",
             feeding: "Carroña y restos de animales.",
             features: "Una de las aves voladoras más grandes del mundo. Planea largas distancias aprovechando las corrientes térmicas.",
@@ -61,10 +45,24 @@ const App = () => {
         },
         {
             id: 2,
+            name: "Guanaco",
+            scientificName: "Lama guanicoe",
+            type: "Mamífero herbívoro",
+            image: "EsculturasKhuyay/Guanaco.jpeg",
+            objectPosition: "top",
+            habitat: "Estepas, montañas y zonas áridas.",
+            feeding: "Pastos y arbustos.",
+            features: "Gran resistencia al clima extremo. Vive en grupos familiares.",
+            humanRelation: "Desde tiempos ancestrales brindó abrigo y sustento a comunidades andinas.",
+            heritage: "El Guanaco forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
+            sculptureNote: "Su silueta destaca en una escultura que resalta el dinamismo y la gracia de este camélido en su hábitat."
+        },
+        {
+            id: 3,
             name: "Vicuña",
             scientificName: "Vicugna vicugna",
             type: "Mamífero herbívoro",
-            image: "animalesautoctonos/vicuna.jpeg",
+            image: "EsculturasKhuyay/WhatsApp Image 2026-05-22 at 11.38.01.jpeg",
             habitat: "Puna y alta montaña andina.",
             feeding: "Hierbas y pastos de altura.",
             features: "Posee una de las fibras más finas del mundo.",
@@ -73,11 +71,11 @@ const App = () => {
             sculptureNote: "Su silueta destaca en una escultura que resalta el dinamismo y la gracia de este camélido en su carrera."
         },
         {
-            id: 3,
+            id: 4,
             name: "Puma",
             scientificName: "Puma concolor",
             type: "Mamífero carnívoro",
-            image: "animalesautoctonos/puma.jpeg",
+            image: "EsculturasKhuyay/Puma concolor.jpeg",
             habitat: "Montañas y quebradas.",
             feeding: "Mamíferos pequeños y medianos.",
             features: "Gran cazador, silencioso y adaptable.",
@@ -86,11 +84,11 @@ const App = () => {
             sculptureNote: "Escultura detallada a tamaño real que muestra su andar sigiloso integrado en la geografía del yacimiento."
         },
         {
-            id: 4,
+            id: 5,
             name: "Zorro",
             scientificName: "Lycalopex culpaeus",
             type: "Mamífero omnívoro",
-            image: "animalesautoctonos/zorro.jpeg",
+            image: "EsculturasKhuyay/Zorro.jpeg",
             habitat: "Zonas áridas y montañosas.",
             feeding: "Roedores, frutos e insectos.",
             features: "Astuto, veloz y adaptable.",
@@ -99,11 +97,11 @@ const App = () => {
             sculptureNote: "Escultura realista que captura la mirada atenta y la postura cautelosa del astuto cánido de montaña."
         },
         {
-            id: 5,
+            id: 6,
             name: "Suri",
             scientificName: "Rhea pennata",
             type: "Ave corredora",
-            image: "animalesautoctonos/suri.jpeg",
+            image: "EsculturasKhuyay/WhatsApp Image 2026-05-22 at 11.38.00 (1).jpeg",
             habitat: "Puna y estepas abiertas.",
             feeding: "Semillas, hierbas e insectos.",
             features: "No vuela y puede correr a gran velocidad.",
@@ -112,11 +110,25 @@ const App = () => {
             sculptureNote: "Figura situada en los flancos de la estrella ceremonial, enriqueciendo su entorno arqueológico."
         },
         {
-            id: 6,
+            id: 7,
+            name: "Chinchilla",
+            scientificName: "Chinchilla chinchilla",
+            type: "Roedor",
+            image: "EsculturasKhuyay/Chinchilla.jpeg",
+            habitat: "Zonas rocosas y secas.",
+            feeding: "Hierbas y semillas.",
+            features: "Pelaje extremadamente suave y hábitos nocturnos.",
+            humanRelation: "Fue muy perseguida por su piel.",
+            heritage: "La Chinchilla forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
+            sculptureNote: "Pequeña y detallada escultura que destaca en el paisaje rocoso."
+        },
+        {
+            id: 8,
             name: "Liebre",
             scientificName: "Lepus europaeus",
             type: "Mamífero herbívoro",
-            image: "animalesautoctonos/liebre.jpeg",
+            image: "EsculturasKhuyay/Liebre.jpeg",
+            objectPosition: "bottom center",
             habitat: "Campos abiertos y estepas.",
             feeding: "Hierbas y brotes.",
             features: "Gran velocidad y largas orejas.",
@@ -125,11 +137,24 @@ const App = () => {
             sculptureNote: "Escultura detallada que captura la liebre en posición de reposo pero atenta a su entorno."
         },
         {
-            id: 7,
+            id: 9,
+            name: "Perdiz",
+            scientificName: "Nothoprocta cinerascens",
+            type: "Ave terrestre",
+            image: "EsculturasKhuyay/WhatsApp Image 2026-05-22 at 11.38.00 (2).jpeg",
+            habitat: "Pastizales y montes bajos.",
+            feeding: "Semillas e insectos.",
+            features: "Vuelo corto y rápido, excelente camuflaje.",
+            humanRelation: "Muy presente en tradiciones rurales.",
+            heritage: "La Perdiz forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
+            sculptureNote: "Pequeña escultura integrada al paisaje, en actitud alerta."
+        },
+        {
+            id: 10,
             name: "Tero",
             scientificName: "Vanellus chilensis",
             type: "Ave",
-            image: "animalesautoctonos/tero.jpeg",
+            image: "EsculturasKhuyay/Tero.jpeg",
             habitat: "Campos y humedales.",
             feeding: "Insectos y pequeños invertebrados.",
             features: "Fuerte canto de alerta y gran protector de su nido.",
@@ -138,11 +163,11 @@ const App = () => {
             sculptureNote: "Representado en su típica postura erguida de vigía, listo para emitir su característico chillido de alarma."
         },
         {
-            id: 8,
+            id: 11,
             name: "Flamenco Andino",
             scientificName: "Phoenicoparrus andinus",
             type: "Ave acuática",
-            image: "animalesautoctonos/flamenco.jpeg",
+            image: "EsculturasKhuyay/Flamenco.jpeg",
             habitat: "Lagunas altoandinas.",
             feeding: "Algas y microorganismos.",
             features: "Plumaje rosado y patas largas.",
@@ -151,11 +176,11 @@ const App = () => {
             sculptureNote: "Representado en su pose clásica sobre una pata, evocando los espejos de agua de la cordillera."
         },
         {
-            id: 9,
+            id: 12,
             name: "Garza",
             scientificName: "Ardea alba",
             type: "Ave acuática",
-            image: "animalesautoctonos/garza.jpeg",
+            image: "EsculturasKhuyay/Garza.jpeg",
             habitat: "Ríos, lagunas y humedales.",
             feeding: "Peces e insectos.",
             features: "Gran paciencia para cazar y vuelo elegante.",
@@ -164,11 +189,11 @@ const App = () => {
             sculptureNote: "Escultura que captura su cuello esbelto y silueta elegante en los márgenes de agua."
         },
         {
-            id: 10,
+            id: 13,
             name: "Lechuza",
             scientificName: "Tyto alba",
             type: "Ave rapaz nocturna",
-            image: "animalesautoctonos/lechuza.jpeg",
+            image: "EsculturasKhuyay/Lechuza.jpeg",
             habitat: "Campos y construcciones rurales.",
             feeding: "Roedores e insectos.",
             features: "Vuelo silencioso y excelente visión nocturna.",
@@ -177,56 +202,30 @@ const App = () => {
             sculptureNote: "Escultura con su característico disco facial en forma de corazón y mirada fija."
         },
         {
-            id: 11,
+            id: 14,
+            name: "Copetona",
+            scientificName: "Eudromia elegans",
+            type: "Ave terrestre",
+            image: "EsculturasKhuyay/WhatsApp Image 2026-05-22 at 11.38.02 (2).jpeg",
+            habitat: "Campos áridos y monte.",
+            feeding: "Semillas e insectos.",
+            features: "Ave veloz y de cresta característica.",
+            humanRelation: "Muy conocida en ambientes rurales del oeste argentino.",
+            heritage: "La Copetona forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
+            sculptureNote: "Escultura representativa del ave con su distintiva cresta."
+        },
+        {
+            id: 15,
             name: "Águila Mora",
             scientificName: "Geranoaetus melanoleucus",
             type: "Ave rapaz",
-            image: "animalesautoctonos/aguilamora.jpeg",
+            image: "EsculturasKhuyay/AguilaMora.jpeg",
             habitat: "Montañas y zonas abiertas.",
             feeding: "Roedores y reptiles.",
             features: "Gran visión y vuelo imponente.",
             humanRelation: "Representa la fuerza y el equilibrio natural.",
             heritage: "El Águila Mora forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
             sculptureNote: "Representada en su pose clásica de acecho sobre un tronco nativo, vigilando los horizontes del parque."
-        },
-        {
-            id: 12,
-            name: "Taruca",
-            scientificName: "Hippocamelus antisensis",
-            type: "Cérvido andino",
-            image: "animalesautoctonos/taruca.jpeg",
-            habitat: "Pastizales de alta montaña y laderas rocosas.",
-            feeding: "Pastos, hierbas y arbustos.",
-            features: "Venado andino mediano con astas bifurcadas en los machos y pelaje denso.",
-            humanRelation: "Considerada monumento nacional natural en Argentina y símbolo de las sierras riojanas.",
-            heritage: "La Taruca forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
-            sculptureNote: "Escultura majestuosa que plasma la corpulencia y las astas de este cérvido en peligro de conservación."
-        },
-        {
-            id: 13,
-            name: "Quirquincho",
-            scientificName: "Chaetophractus vellerosus",
-            type: "Mamífero acorazado",
-            image: "animalesautoctonos/quirquincho.jpeg",
-            habitat: "Zonas áridas, estepas y desiertos de monte.",
-            feeding: "Insectos, pequeños vertebrados, raíces y frutos.",
-            features: "Posee un caparazón articulado cubierto de pelos y gran habilidad excavadora.",
-            humanRelation: "Protagonista de leyendas andinas y folklore musical de la región.",
-            heritage: "El Quirquincho forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
-            sculptureNote: "Pequeña y detallada escultura que destaca las placas de su caparazón sobre el suelo árido."
-        },
-        {
-            id: 14,
-            name: "Pato",
-            scientificName: "Anatidae sp.",
-            type: "Ave acuática",
-            image: "animalesautoctonos/pato.jpeg",
-            habitat: "Lagunas de altura, ríos y arroyos de montaña.",
-            feeding: "Plantas acuáticas, larvas de insectos y pequeños moluscos.",
-            features: "Cuerpo hidrodinámico, patas palmeadas y excelente adaptabilidad al agua.",
-            humanRelation: "Habitante común de los cuerpos hídricos locales que provee equilibrio biológico.",
-            heritage: "El Pato forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
-            sculptureNote: "Representado en una pose tranquila cerca de las áreas hídricas del parque."
         }
     ];
 
@@ -514,171 +513,92 @@ const App = () => {
                         </div>
                     </div>
 
-                    {/* Carousel Wrapper */}
-                    <div className="fauna-carousel-wrapper">
-                        <div className="fauna-carousel-container">
-                            <button 
-                                onClick={handlePrev} 
-                                className="fauna-carousel-btn"
-                                aria-label="Animal anterior"
-                            >
-                                <ChevronLeft size={24} />
-                            </button>
-
-                            <div className="fauna-carousel-track">
-                                {/* Desktop: shows currentIndex and (currentIndex + 1) % 7. Mobile: shows currentIndex */}
-                                {(() => {
-                                    const visibleIndices = isMobile 
-                                        ? [currentIndex] 
-                                        : [currentIndex, (currentIndex + 1) % faunaData.length];
-                                    
-                                    return visibleIndices.map((idx) => {
-                                        const animal = faunaData[idx];
-                                        const isActive = activeDetailIndex === idx;
-                                        return (
-                                            <motion.div
-                                                key={animal.id}
-                                                className={`fauna-card ${isActive ? 'active' : ''}`}
-                                                onClick={() => setActiveDetailIndex(idx)}
-                                                layout
-                                                initial={{ opacity: 0, scale: 0.95 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                exit={{ opacity: 0, scale: 0.95 }}
-                                                transition={{ duration: 0.4 }}
-                                            >
-                                                <div className="fauna-image-container">
-                                                    <img src={animal.image} alt={animal.name} className="fauna-image" style={{ objectPosition: animal.objectPosition || 'center' }} />
-                                                    <div className="fauna-badge">
-                                                        <span>{animal.type}</span>
-                                                    </div>
-                                                </div>
-                                                <div className="fauna-content">
-                                                    <span className="fauna-scientific">{animal.scientificName}</span>
-                                                    <h3 className="fauna-name">{animal.name}</h3>
-                                                    <p className="fauna-desc">{animal.features}</p>
-                                                    <div className="fauna-card-footer">
-                                                        <span>
-                                                            <Star size={14} fill="currentColor" />
-                                                            Ver Ficha Técnica
-                                                        </span>
-                                                        <ArrowRight size={14} />
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        );
-                                    });
-                                })()}
-                            </div>
-
-                            <button 
-                                onClick={handleNext} 
-                                className="fauna-carousel-btn"
-                                aria-label="Siguiente animal"
-                            >
-                                <ChevronRight size={24} />
-                            </button>
-                        </div>
-
-                        {/* Dots indicator */}
-                        <div className="fauna-carousel-dots">
-                            {faunaData.map((_, idx) => (
-                                <button
-                                    key={idx}
-                                    className={`fauna-dot ${idx === currentIndex ? 'active' : ''}`}
-                                    onClick={() => {
-                                        setCurrentIndex(idx);
-                                        setActiveDetailIndex(idx);
-                                    }}
-                                    aria-label={`Ir a animal ${idx + 1}`}
-                                />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Interactive Technical Datasheet (Ficha Técnica) */}
-                    {(() => {
-                        const activeAnimal = faunaData[activeDetailIndex];
-                        return (
+                    {/* Fauna Grid Display */}
+                    <div className="fauna-grid">
+                        {faunaData.map((animal) => (
                             <motion.div 
-                                key={activeAnimal.id}
-                                className="fauna-details-panel"
+                                key={animal.id}
+                                className="fauna-detail-card"
                                 initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <div className="panel-header">
-                                    <div className="panel-title-container">
-                                        <h3 className="panel-title">{activeAnimal.name}</h3>
-                                        <span className="panel-scientific">{activeAnimal.scientificName}</span>
+                                <div className="fauna-detail-image-wrapper">
+                                    <img 
+                                        src={animal.image} 
+                                        alt={animal.name} 
+                                        className="fauna-detail-image" 
+                                        style={{ objectPosition: animal.objectPosition || undefined }}
+                                    />
+                                    <div className="fauna-badge">
+                                        <span>{animal.type}</span>
                                     </div>
                                 </div>
-                                <div className="panel-grid">
-                                    <div className="panel-column">
-                                        <div className="info-block">
-                                            <div className="info-icon-wrapper">
-                                                <Compass size={20} />
-                                            </div>
-                                            <div className="info-content">
-                                                <span className="info-label">Tipo de Especie</span>
-                                                <span className="info-text">{activeAnimal.type}</span>
-                                            </div>
-                                        </div>
-                                        <div className="info-block">
-                                            <div className="info-icon-wrapper">
-                                                <MapPin size={20} />
-                                            </div>
-                                            <div className="info-content">
-                                                <span className="info-label">Hábitat Natural</span>
-                                                <span className="info-text">{activeAnimal.habitat}</span>
-                                            </div>
-                                        </div>
-                                        <div className="info-block">
-                                            <div className="info-icon-wrapper">
-                                                <Droplets size={20} />
-                                            </div>
-                                            <div className="info-content">
-                                                <span className="info-label">Alimentación</span>
-                                                <span className="info-text">{activeAnimal.feeding}</span>
-                                            </div>
+                                <div className="fauna-detail-content">
+                                    <div className="panel-header">
+                                        <div className="panel-title-container">
+                                            <h3 className="panel-title">{animal.name}</h3>
+                                            <span className="panel-scientific">{animal.scientificName}</span>
                                         </div>
                                     </div>
                                     
-                                    <div className="panel-column">
-                                        <div className="info-block">
-                                            <div className="info-icon-wrapper">
-                                                <Eye size={20} />
-                                            </div>
-                                            <div className="info-content">
-                                                <span className="info-label">Características Destacadas</span>
-                                                <span className="info-text">{activeAnimal.features}</span>
-                                            </div>
+                                    <div className="info-block">
+                                        <div className="info-icon-wrapper">
+                                            <MapPin size={24} />
                                         </div>
-                                        <div className="info-block">
-                                            <div className="info-icon-wrapper">
-                                                <Heart size={20} />
-                                            </div>
-                                            <div className="info-content">
-                                                <span className="info-label">Relación con el Ser Humano</span>
-                                                <span className="info-text">{activeAnimal.humanRelation}</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className="heritage-box">
-                                            <div className="heritage-header">
-                                                <Shield size={16} />
-                                                <h4 className="heritage-title" style={{ margin: 0 }}>Valor Patrimonial</h4>
-                                            </div>
-                                            <p className="heritage-text">{activeAnimal.heritage}</p>
+                                        <div className="info-content">
+                                            <span className="info-label">Hábitat Natural</span>
+                                            <span className="info-text">{animal.habitat}</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="fauna-sculpture-note">
-                                    <Landmark size={16} className="text-primary" />
-                                    <span><strong>Nota de la Escultura:</strong> {activeAnimal.sculptureNote}</span>
+                                    
+                                    <div className="info-block">
+                                        <div className="info-icon-wrapper">
+                                            <Droplets size={24} />
+                                        </div>
+                                        <div className="info-content">
+                                            <span className="info-label">Alimentación</span>
+                                            <span className="info-text">{animal.feeding}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="info-block">
+                                        <div className="info-icon-wrapper">
+                                            <Eye size={24} />
+                                        </div>
+                                        <div className="info-content">
+                                            <span className="info-label">Características Destacadas</span>
+                                            <span className="info-text">{animal.features}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="info-block">
+                                        <div className="info-icon-wrapper">
+                                            <Heart size={24} />
+                                        </div>
+                                        <div className="info-content">
+                                            <span className="info-label">Relación con el Ser Humano</span>
+                                            <span className="info-text">{animal.humanRelation}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="heritage-box">
+                                        <div className="heritage-header">
+                                            <Shield size={18} />
+                                            <h4 className="heritage-title" style={{ margin: 0 }}>Valor Patrimonial</h4>
+                                        </div>
+                                        <p className="heritage-text">{animal.heritage}</p>
+                                    </div>
+                                    
+                                    <div className="fauna-sculpture-note">
+                                        <Landmark size={20} className="text-primary" />
+                                        <span className="sculpture-text"><strong>Nota de la Escultura:</strong> {animal.sculptureNote}</span>
+                                    </div>
                                 </div>
                             </motion.div>
-                        );
-                    })()}
+                        ))}
+                    </div>
                 </div>
             </section>
 

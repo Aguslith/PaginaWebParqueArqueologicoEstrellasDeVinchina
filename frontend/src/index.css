@@ -437,109 +437,52 @@ section {
   align-items: center;
 }
 
-/* Fauna Section Styles - Carousel and Ficha Técnica */
-.fauna-carousel-wrapper {
-  margin-top: 40px;
-  position: relative;
-}
-
-.fauna-carousel-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  position: relative;
-  width: 100%;
-}
-
-.fauna-carousel-track {
+/* Fauna Grid Section Styles */
+.fauna-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
-  width: 100%;
-  transition: all 0.5s var(--transition-smooth);
+  gap: 40px;
+  margin-top: 40px;
 }
-
-@media (min-width: 768px) {
-  .fauna-carousel-track {
+@media (min-width: 1024px) {
+  .fauna-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.fauna-carousel-btn {
-  background: white;
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s var(--transition-smooth);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  color: var(--secondary-color);
-  flex-shrink: 0;
-  z-index: 10;
-}
-
-.fauna-carousel-btn:hover {
-  background-color: var(--primary-color);
-  color: white;
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(211, 47, 47, 0.2);
-  border-color: var(--primary-color);
-}
-
-.fauna-carousel-btn:active {
-  transform: scale(0.95);
-}
-
-/* Card Styling */
-.fauna-card {
-  background: white;
+.fauna-detail-card {
+  background-color: var(--bg-dark);
   border-radius: 12px;
   overflow: hidden;
-  border: 2px solid var(--border-color);
-  transition: all 0.4s var(--transition-smooth);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  cursor: pointer;
-  position: relative;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.fauna-card:hover {
+.fauna-detail-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
-  border-color: rgba(211, 47, 47, 0.15);
-}
-
-.fauna-card.active {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
   border-color: var(--primary-color);
-  box-shadow: 0 20px 40px rgba(211, 47, 47, 0.08);
-  transform: translateY(-8px);
 }
 
-.fauna-image-container {
-  position: relative;
-  height: 300px;
+.fauna-detail-image-wrapper {
   width: 100%;
+  height: 350px;
+  position: relative;
   overflow: hidden;
-  background-color: var(--bg-dark);
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.fauna-image {
+.fauna-detail-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  border-radius: 6px;
-  transition: transform 0.6s var(--transition-smooth);
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s ease;
 }
 
-.fauna-card:hover .fauna-image {
+.fauna-detail-card:hover .fauna-detail-image {
   transform: scale(1.05);
 }
 
@@ -549,160 +492,63 @@ section {
   right: 20px;
   background: rgba(26, 26, 26, 0.85);
   backdrop-filter: blur(8px);
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: white;
   z-index: 5;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-.fauna-content {
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.fauna-scientific {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--primary-color);
-  letter-spacing: 0.1em;
-  margin-bottom: 6px;
-}
-
-.fauna-name {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  color: var(--secondary-color);
-  margin-bottom: 10px;
-}
-
-.fauna-desc {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 15px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.fauna-card-footer {
-  margin-top: auto;
-  padding-top: 15px;
-  border-top: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  letter-spacing: 0.05em;
-}
-
-.fauna-card-footer span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Dots indicator */
-.fauna-carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 25px;
-}
-
-.fauna-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--border-color);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-}
-
-.fauna-dot.active {
-  background-color: var(--primary-color);
-  width: 24px;
-  border-radius: 4px;
-}
-
-/* Details Panel (Ficha Técnica) */
-.fauna-details-panel {
-  margin-top: 50px;
-  background-color: var(--bg-dark);
-  border-left: 6px solid var(--primary-color);
-  border-radius: 8px;
-  padding: 40px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
-  transition: all 0.4s var(--transition-smooth);
-}
-
-.panel-header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  padding-bottom: 20px;
-  margin-bottom: 30px;
-}
-
-.panel-title-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.panel-title {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
-  color: var(--secondary-color);
-}
-
-.panel-scientific {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: var(--primary-color);
-  font-weight: 600;
-}
-
-.panel-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-}
-
-@media (min-width: 992px) {
-  .panel-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.panel-column {
+.fauna-detail-content {
+  padding: 30px;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  flex-grow: 1;
 }
 
-.info-block {
+.fauna-detail-content .panel-header {
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+  padding-bottom: 15px;
+  margin-bottom: 0;
+}
+
+.fauna-detail-content .panel-title-container {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fauna-detail-content .panel-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  margin-bottom: 0;
+  color: var(--secondary-color);
+  line-height: 1.2;
+}
+
+.fauna-detail-content .panel-scientific {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.fauna-detail-content .info-block {
+  display: flex;
+  gap: 15px;
   align-items: flex-start;
 }
 
-.info-icon-wrapper {
+.fauna-detail-content .info-icon-wrapper {
   background: white;
   color: var(--primary-color);
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -712,60 +558,84 @@ section {
   border: 1px solid var(--border-color);
 }
 
-.info-content {
+.fauna-detail-content .info-content {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.info-label {
-  font-size: 0.75rem;
+.fauna-detail-content .info-label {
+  font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--text-secondary);
   letter-spacing: 0.1em;
-  opacity: 0.7;
+  display: block;
 }
 
-.info-text {
-  font-size: 0.95rem;
+.fauna-detail-content .info-text {
+  font-size: 1.15rem;
   color: var(--text-primary);
   line-height: 1.6;
+  display: block;
 }
 
-.heritage-box {
+.fauna-detail-content .heritage-box {
   background-color: white;
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  padding: 20px;
-  margin-top: 15px;
+  padding: 25px;
   position: relative;
+  margin-top: 10px;
 }
 
-.heritage-box::before {
+.fauna-detail-content .heritage-box::before {
   content: '';
   position: absolute;
   left: 0;
   top: 10%;
   height: 80%;
-  width: 3px;
+  width: 4px;
   background-color: var(--primary-color);
+  border-radius: 0 4px 4px 0;
 }
 
-.heritage-title {
-  font-size: 0.8rem;
-  font-weight: 700;
+.fauna-detail-content .heritage-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--secondary-color);
+}
+
+.fauna-detail-content .heritage-title {
+  font-size: 1.15rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--secondary-color);
-  margin-bottom: 8px;
+  margin: 0;
 }
 
-.heritage-text {
-  font-size: 0.9rem;
+.fauna-detail-content .heritage-text {
+  font-size: 1.15rem;
   font-style: italic;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+.fauna-detail-content .fauna-sculpture-note {
+  padding-top: 25px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: auto;
+}
+
+.fauna-detail-content .sculpture-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--secondary-color);
 }
 
 /* --- RESPONSIVE & LAYOUT UTILITIES --- */
