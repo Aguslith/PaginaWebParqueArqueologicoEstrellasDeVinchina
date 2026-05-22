@@ -185,15 +185,15 @@ const App = () => {
                             transition={{ duration: 1 }}
                             className="hero-content"
                         >
-                            <span className="hero-tag">LA RIOJA • EL LEGADO CAPAYÁN</span>
+                            <span className="hero-tag">PACHA KHUYAY • AMOR A LA TIERRA, A SU GENTE Y A LA MADRE NATURALEZA</span>
                             <h1 className="hero-title">
-                                Los Conjuros <br/> <span className="text-primary">de Piedra</span>
+                                Pacha <span className="text-primary">Khuyay</span>
                             </h1>
                             <p className="hero-description">
-                                Descubre las "Estrellas de Vinchina", antiguos espejos de agua diseñados por los Capayanes para invocar la lluvia y descifrar el firmamento.
+                                Es un monumento a la fauna andina, que lo hace único en el país, recientemente inaugurado en el portal de ingreso a Villa San José de Vinchina. Consiste en 22 esculturas de cada especie autóctona de la región, realizadas en hormigón armado en tamaño natural, implantadas en una réplica de las estrellas Capayán, que se encuentran en el otro extremo de la ciudad.
                             </p>
-                            <a href="#simbolismo" className="btn-red">
-                                DESCUBRE EL SIMBOLISMO <ArrowRight size={18} />
+                            <a href="#fauna" className="btn-red">
+                                VER LAS ESCULTURAS <ArrowRight size={18} />
                             </a>
                         </motion.div>
                         <motion.div 
@@ -202,12 +202,20 @@ const App = () => {
                             transition={{ duration: 1.2 }}
                             className="hero-image-visual"
                         >
-                            <img src="external/v1.jpg" alt="Vinchina Panoramic" />
+                            <video 
+                                src="VideoDeKhuyay.mp4" 
+                                autoPlay 
+                                loop 
+                                muted 
+                                playsInline 
+                                controls 
+                                className="hero-video"
+                            />
                             <div className="hero-badge">
                                 <Landmark size={24} className="hero-badge-icon" />
                                 <div className="hero-badge-text">
-                                    <span className="hero-badge-subtitle">Siglo X - XV</span>
-                                    <span className="hero-badge-title">PUEBLO CAPAYÁN</span>
+                                    <span className="hero-badge-subtitle">Villa San José</span>
+                                    <span className="hero-badge-title">DE VINCHINA</span>
                                 </div>
                             </div>
                         </motion.div>
