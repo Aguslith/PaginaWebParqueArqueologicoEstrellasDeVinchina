@@ -9,6 +9,8 @@ const App = () => {
     
     const video1Ref = useRef(null);
     const video2Ref = useRef(null);
+    const video3Ref = useRef(null);
+    const video4Ref = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -65,7 +67,8 @@ const App = () => {
             name: "Vicuña",
             scientificName: "Vicugna vicugna",
             type: "Mamífero herbívoro",
-            image: "EsculturasKhuyay/WhatsApp Image 2026-05-22 at 11.38.01.jpeg",
+            image: "EsculturasKhuyay/vicuña.jpeg",
+            objectPosition: "center",
             habitat: "Puna y alta montaña andina.",
             feeding: "Hierbas y pastos de altura.",
             features: "Posee una de las fibras más finas del mundo.",
@@ -104,7 +107,8 @@ const App = () => {
             name: "Suri",
             scientificName: "Rhea pennata",
             type: "Ave corredora",
-            image: "EsculturasKhuyay/WhatsApp Image 2026-05-22 at 11.38.00 (1).jpeg",
+            image: "EsculturasKhuyay/Suri.jpeg",
+            objectPosition: "center",
             habitat: "Puna y estepas abiertas.",
             feeding: "Semillas, hierbas e insectos.",
             features: "No vuela y puede correr a gran velocidad.",
@@ -144,7 +148,8 @@ const App = () => {
             name: "Perdiz",
             scientificName: "Nothoprocta cinerascens",
             type: "Ave terrestre",
-            image: "EsculturasKhuyay/WhatsApp Image 2026-05-22 at 11.38.00 (2).jpeg",
+            image: "EsculturasKhuyay/Perdiz Copetona.jpeg",
+            objectPosition: "center",
             habitat: "Pastizales y montes bajos.",
             feeding: "Semillas e insectos.",
             features: "Vuelo corto y rápido, excelente camuflaje.",
@@ -158,6 +163,7 @@ const App = () => {
             scientificName: "Vanellus chilensis",
             type: "Ave",
             image: "EsculturasKhuyay/Tero.jpeg",
+            objectPosition: "center",
             habitat: "Campos y humedales.",
             feeding: "Insectos y pequeños invertebrados.",
             features: "Fuerte canto de alerta y gran protector de su nido.",
@@ -204,19 +210,7 @@ const App = () => {
             heritage: "La Lechuza forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
             sculptureNote: "Escultura con su característico disco facial en forma de corazón y mirada fija."
         },
-        {
-            id: 14,
-            name: "Copetona",
-            scientificName: "Eudromia elegans",
-            type: "Ave terrestre",
-            image: "EsculturasKhuyay/WhatsApp Image 2026-05-22 at 11.38.02 (2).jpeg",
-            habitat: "Campos áridos y monte.",
-            feeding: "Semillas e insectos.",
-            features: "Ave veloz y de cresta característica.",
-            humanRelation: "Muy conocida en ambientes rurales del oeste argentino.",
-            heritage: "La Copetona forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
-            sculptureNote: "Escultura representativa del ave con su distintiva cresta."
-        },
+
         {
             id: 15,
             name: "Águila Mora",
@@ -229,6 +223,20 @@ const App = () => {
             humanRelation: "Representa la fuerza y el equilibrio natural.",
             heritage: "El Águila Mora forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
             sculptureNote: "Representada en su pose clásica de acecho sobre un tronco nativo, vigilando los horizontes del parque."
+        },
+        {
+            id: 16,
+            name: "Taruca",
+            scientificName: "Hippocamelus antisensis",
+            type: "Mamífero herbívoro",
+            image: "EsculturasKhuyay/Taruca.jpeg",
+            objectPosition: "center",
+            habitat: "Pastizales de altura andinos (Noroeste argentino).",
+            feeding: "Vegetación nativa de alta montaña.",
+            features: "En peligro de extinción (menos de 2.500 individuos). Declarada Monumento Natural Nacional.",
+            humanRelation: "Sufre amenazas por pérdida de hábitat, caza furtiva y competencia con ganado doméstico.",
+            heritage: "La Taruca forma parte del patrimonio natural y cultural de los Andes riojanos, representando el vínculo entre la naturaleza, la historia y la vida de montaña.",
+            sculptureNote: "Escultura que rinde homenaje a este valioso cérvido andino, recordando la urgencia de su conservación."
         }
     ];
 
@@ -242,10 +250,12 @@ const App = () => {
                 </div>
                 
                 <div className="nav-links">
+                    <a href="#">Inicio</a>
+                    <a href="#">Sobre nosotros</a>
                     <a href="#que-es">¿Qué es?</a>
+                    <a href="#fauna">Fauna</a>
                     <a href="#simbolismo">Simbolismo</a>
                     <a href="#geoglifos">Geoglifos</a>
-                    <a href="#fauna">Fauna</a>
                     <a href="#ubicacion">Ubicación</a>
                     <a href="#inauguracion" className="nav-inauguracion">¡Inauguración!</a>
                 </div>
@@ -259,12 +269,13 @@ const App = () => {
                 </button>
             </nav>
 
-            {/* Mobile Navigation Drawer */}
             <div className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
+                <a href="#" onClick={() => setIsMenuOpen(false)}>Inicio</a>
+                <a href="#" onClick={() => setIsMenuOpen(false)}>Sobre nosotros</a>
                 <a href="#que-es" onClick={() => setIsMenuOpen(false)}>¿Qué es?</a>
+                <a href="#fauna" onClick={() => setIsMenuOpen(false)}>Fauna</a>
                 <a href="#simbolismo" onClick={() => setIsMenuOpen(false)}>Simbolismo</a>
                 <a href="#geoglifos" onClick={() => setIsMenuOpen(false)}>Geoglifos</a>
-                <a href="#fauna" onClick={() => setIsMenuOpen(false)}>Fauna</a>
                 <a href="#ubicacion" onClick={() => setIsMenuOpen(false)}>Ubicación</a>
                 <a href="#inauguracion" className="nav-inauguracion-mobile" onClick={() => setIsMenuOpen(false)}>¡Inauguración!</a>
             </div>
@@ -320,7 +331,7 @@ const App = () => {
             </header>
 
             {/* Pilares Section */}
-            <section id="pilares" className="bg-light" style={{ padding: '80px 0' }}>
+            <section id="pilares" className="bg-light">
                 <div className="container">
                     <div className="features-grid">
                         <div className="feature-card">
@@ -349,7 +360,7 @@ const App = () => {
             </section>
 
             {/* Inauguración Section */}
-            <section id="inauguracion" className="bg-white" style={{ padding: '80px 0' }}>
+            <section id="inauguracion" className="bg-white">
                 <div className="container">
                     <div className="section-header-center">
                         <motion.h2 
@@ -359,7 +370,7 @@ const App = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, type: 'spring' }}
                         >
-                            ACTO DE INAUGURACIÓN DEL PARQUE PACHA KHUYAY .. 08..01. 2026
+                            ACTO DE INAUGURACIÓN DEL PARQUE PACHA KHUYAY - 8 DE ENERO DE 2026
                         </motion.h2>
                     </div>
                     <div className="inauguracion-gallery">
@@ -372,7 +383,7 @@ const App = () => {
                             onViewportLeave={() => video1Ref.current?.pause()}
                             transition={{ duration: 0.8 }}
                         >
-                            <video ref={video1Ref} src="InaguracionKhuyay/video01.mp4" controls className="inauguracion-video" muted playsInline />
+                            <video ref={video1Ref} src="InaguracionKhuyay/EL MEJOR REGALO PARA MI PUEBLO Mi mejor cumpleaños__ Infinitas Gracias a Dios y a todos . _PACHAKHUYAY(720P_HD) (1).mp4" controls className="inauguracion-video" muted playsInline />
                         </motion.div>
                         <motion.div 
                             className="inauguracion-video-wrapper"
@@ -383,7 +394,29 @@ const App = () => {
                             onViewportLeave={() => video2Ref.current?.pause()}
                             transition={{ duration: 0.8 }}
                         >
-                            <video ref={video2Ref} src="InaguracionKhuyay/video02.mp4" controls className="inauguracion-video" muted playsInline />
+                            <video ref={video2Ref} src="InaguracionKhuyay/Facebook 1209197840660884(480P_SD).mp4" controls className="inauguracion-video" muted playsInline />
+                        </motion.div>
+                        <motion.div 
+                            className="inauguracion-video-wrapper"
+                            initial={{ x: -50, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            viewport={{ once: false, amount: 0.5 }}
+                            onViewportEnter={() => video3Ref.current?.play()}
+                            onViewportLeave={() => video3Ref.current?.pause()}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <video ref={video3Ref} src="InaguracionKhuyay/video01.mp4" controls className="inauguracion-video" muted playsInline />
+                        </motion.div>
+                        <motion.div 
+                            className="inauguracion-video-wrapper"
+                            initial={{ x: 50, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            viewport={{ once: false, amount: 0.5 }}
+                            onViewportEnter={() => video4Ref.current?.play()}
+                            onViewportLeave={() => video4Ref.current?.pause()}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <video ref={video4Ref} src="InaguracionKhuyay/video02.mp4" controls className="inauguracion-video" muted playsInline />
                         </motion.div>
                     </div>
                 </div>
@@ -436,8 +469,112 @@ const App = () => {
                 </div>
             </section>
 
+
+            {/* Fauna Section */}
+            <section id="fauna" className="bg-light">
+                <div className="container">
+                    <div className="section-header-center">
+                        <h2 className="section-title">Fauna Autóctona</h2>
+                        <div className="section-intro-container">
+                            <p className="section-intro-text">
+                                Colección de fichas técnicas educativas e interpretativas del parque Pacha Khuyay, espacio dedicado a la conservación y valoración de la fauna autóctona.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Fauna Grid Display */}
+                    <div className="fauna-grid">
+                        {faunaData.map((animal) => (
+                            <motion.div 
+                                key={animal.id}
+                                className="fauna-detail-card"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <div className="fauna-detail-image-wrapper">
+                                    <img 
+                                        src={animal.image} 
+                                        alt={animal.name} 
+                                        className="fauna-detail-image" 
+                                        style={{ objectPosition: animal.objectPosition || undefined }}
+                                    />
+                                    <div className="fauna-badge">
+                                        <span>{animal.type}</span>
+                                    </div>
+                                </div>
+                                <div className="fauna-detail-content">
+                                    <div className="panel-header">
+                                        <div className="panel-title-container">
+                                            <h3 className="panel-title">{animal.name}</h3>
+                                            <span className="panel-scientific">{animal.scientificName}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="info-blocks-grid">
+                                        <div className="info-block">
+                                            <div className="info-icon-wrapper">
+                                                <MapPin size={24} />
+                                            </div>
+                                            <div className="info-content">
+                                                <span className="info-label">Hábitat Natural</span>
+                                                <span className="info-text">{animal.habitat}</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="info-block">
+                                            <div className="info-icon-wrapper">
+                                                <Droplets size={24} />
+                                            </div>
+                                            <div className="info-content">
+                                                <span className="info-label">Alimentación</span>
+                                                <span className="info-text">{animal.feeding}</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="info-block">
+                                            <div className="info-icon-wrapper">
+                                                <Eye size={24} />
+                                            </div>
+                                            <div className="info-content">
+                                                <span className="info-label">Características Destacadas</span>
+                                                <span className="info-text">{animal.features}</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="info-block">
+                                            <div className="info-icon-wrapper">
+                                                <Heart size={24} />
+                                            </div>
+                                            <div className="info-content">
+                                                <span className="info-label">Relación con el Ser Humano</span>
+                                                <span className="info-text">{animal.humanRelation}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="heritage-box">
+                                        <div className="heritage-header">
+                                            <Shield size={18} />
+                                            <h4 className="heritage-title" style={{ margin: 0 }}>Valor Patrimonial</h4>
+                                        </div>
+                                        <p className="heritage-text">{animal.heritage}</p>
+                                    </div>
+                                    
+                                    <div className="fauna-sculpture-note">
+                                        <Landmark size={20} className="text-primary" />
+                                        <span className="sculpture-text"><strong>Nota de la Escultura:</strong> {animal.sculptureNote}</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* New Symbolism Section: Mirror of Heaven */}
-            <section id="simbolismo" className="bg-light">
+            <section id="simbolismo" className="bg-white">
                 <div className="container">
                     <div className="section-header-center">
                         <span className="section-tag">El Espejo del Cielo</span>
@@ -486,7 +623,7 @@ const App = () => {
             </section>
 
             {/* Tourist Intro Section - Updated with Capayán info */}
-            <section id="experiencia">
+            <section id="experiencia" className="bg-light">
                 <div className="container">
                     <div className="section-header-center">
                         <span className="section-tag">Herencia de los Capayanes</span>
@@ -527,10 +664,10 @@ const App = () => {
             </section>
 
             {/* Gallery Grid */}
-            <section id="geoglifos" className="bg-light">
+            <section id="geoglifos" className="bg-white">
                 <div className="container">
                     <span className="section-tag">Galería de Imágenes</span>
-                    <h2 className="section-title">El Arte Capayán</h2>
+                    <h2 className="section-title">Parque arqueológico, las estrellas Capayan</h2>
                     <div className="gallery-grid">
                         {images.map((img, i) => (
                             <motion.div 
@@ -540,108 +677,6 @@ const App = () => {
                             >
                                 <img src={img.url} alt={img.title} />
                                 <div className="gallery-label">{img.title}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Fauna Section */}
-            <section id="fauna" className="bg-white">
-                <div className="container">
-                    <div className="section-header-center">
-                        <span className="section-tag">Esculturas del Parque</span>
-                        <h2 className="section-title">Fauna Autóctona</h2>
-                        <div className="section-intro-container">
-                            <p className="section-intro-text">
-                                Recientemente se han incorporado al parque arqueológico esculturas a tamaño real de los animales más representativos de la región andina. Estas obras rinden homenaje a la biodiversidad local y complementan el simbolismo sagrado de las estrellas.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Fauna Grid Display */}
-                    <div className="fauna-grid">
-                        {faunaData.map((animal) => (
-                            <motion.div 
-                                key={animal.id}
-                                className="fauna-detail-card"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <div className="fauna-detail-image-wrapper">
-                                    <img 
-                                        src={animal.image} 
-                                        alt={animal.name} 
-                                        className="fauna-detail-image" 
-                                        style={{ objectPosition: animal.objectPosition || undefined }}
-                                    />
-                                    <div className="fauna-badge">
-                                        <span>{animal.type}</span>
-                                    </div>
-                                </div>
-                                <div className="fauna-detail-content">
-                                    <div className="panel-header">
-                                        <div className="panel-title-container">
-                                            <h3 className="panel-title">{animal.name}</h3>
-                                            <span className="panel-scientific">{animal.scientificName}</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="info-block">
-                                        <div className="info-icon-wrapper">
-                                            <MapPin size={24} />
-                                        </div>
-                                        <div className="info-content">
-                                            <span className="info-label">Hábitat Natural</span>
-                                            <span className="info-text">{animal.habitat}</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="info-block">
-                                        <div className="info-icon-wrapper">
-                                            <Droplets size={24} />
-                                        </div>
-                                        <div className="info-content">
-                                            <span className="info-label">Alimentación</span>
-                                            <span className="info-text">{animal.feeding}</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="info-block">
-                                        <div className="info-icon-wrapper">
-                                            <Eye size={24} />
-                                        </div>
-                                        <div className="info-content">
-                                            <span className="info-label">Características Destacadas</span>
-                                            <span className="info-text">{animal.features}</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="info-block">
-                                        <div className="info-icon-wrapper">
-                                            <Heart size={24} />
-                                        </div>
-                                        <div className="info-content">
-                                            <span className="info-label">Relación con el Ser Humano</span>
-                                            <span className="info-text">{animal.humanRelation}</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="heritage-box">
-                                        <div className="heritage-header">
-                                            <Shield size={18} />
-                                            <h4 className="heritage-title" style={{ margin: 0 }}>Valor Patrimonial</h4>
-                                        </div>
-                                        <p className="heritage-text">{animal.heritage}</p>
-                                    </div>
-                                    
-                                    <div className="fauna-sculpture-note">
-                                        <Landmark size={20} className="text-primary" />
-                                        <span className="sculpture-text"><strong>Nota de la Escultura:</strong> {animal.sculptureNote}</span>
-                                    </div>
-                                </div>
                             </motion.div>
                         ))}
                     </div>
