@@ -1270,4 +1270,85 @@ section {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
+/* Inauguración Section Styles */
+.nav-inauguracion {
+    color: var(--primary-color) !important;
+    font-weight: 800 !important;
+    background-color: rgba(211, 47, 47, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--primary-color);
+    animation: pulse-red 2s infinite;
+}
 
+.nav-inauguracion:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+}
+
+.nav-inauguracion-mobile {
+    color: var(--primary-color) !important;
+    font-weight: 800 !important;
+    background-color: rgba(211, 47, 47, 0.1);
+    padding: 10px 24px;
+    border-radius: 30px;
+    border: 2px solid var(--primary-color);
+    animation: pulse-red 2s infinite;
+}
+
+.inauguration-title {
+    color: var(--primary-color) !important;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin-bottom: 50px;
+    background: linear-gradient(45deg, var(--primary-color), #ff5252);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.inauguracion-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+@media (min-width: 992px) {
+    .inauguracion-gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.inauguracion-video-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    background: #000;
+    border: 3px solid rgba(211, 47, 47, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.inauguracion-video-wrapper:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(211, 47, 47, 0.2);
+    border-color: var(--primary-color);
+}
+
+.inauguracion-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+}

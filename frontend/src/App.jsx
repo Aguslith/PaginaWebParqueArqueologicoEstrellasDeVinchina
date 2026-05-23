@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Compass, Calendar, Star, MapPin, ArrowRight, Landmark, Droplets, Moon, Sun, ChevronLeft, ChevronRight, Eye, Shield, Heart, Menu, X, Facebook, Twitter, Instagram, BookOpen } from 'lucide-react';
 
@@ -6,6 +6,9 @@ const App = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
+    const video1Ref = useRef(null);
+    const video2Ref = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -244,6 +247,7 @@ const App = () => {
                     <a href="#geoglifos">Geoglifos</a>
                     <a href="#fauna">Fauna</a>
                     <a href="#ubicacion">Ubicación</a>
+                    <a href="#inauguracion" className="nav-inauguracion">¡Inauguración!</a>
                 </div>
 
                 <button 
@@ -262,6 +266,7 @@ const App = () => {
                 <a href="#geoglifos" onClick={() => setIsMenuOpen(false)}>Geoglifos</a>
                 <a href="#fauna" onClick={() => setIsMenuOpen(false)}>Fauna</a>
                 <a href="#ubicacion" onClick={() => setIsMenuOpen(false)}>Ubicación</a>
+                <a href="#inauguracion" className="nav-inauguracion-mobile" onClick={() => setIsMenuOpen(false)}>¡Inauguración!</a>
             </div>
 
             {/* Hero Section */}
@@ -339,6 +344,47 @@ const App = () => {
                             <h3>Educativo</h3>
                             <p>Aprendé sobre la fauna nativa de los Andes en un espacio pensado para conectar a chicos y grandes con la naturaleza, la historia y el respeto por el entorno.</p>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Inauguración Section */}
+            <section id="inauguracion" className="bg-white" style={{ padding: '80px 0' }}>
+                <div className="container">
+                    <div className="section-header-center">
+                        <motion.h2 
+                            className="section-title inauguration-title"
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, type: 'spring' }}
+                        >
+                            ACTO DE INAUGURACIÓN DEL PARQUE PACHA KHUYAY .. 08..01. 2026
+                        </motion.h2>
+                    </div>
+                    <div className="inauguracion-gallery">
+                        <motion.div 
+                            className="inauguracion-video-wrapper"
+                            initial={{ x: -50, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            viewport={{ once: false, amount: 0.5 }}
+                            onViewportEnter={() => video1Ref.current?.play()}
+                            onViewportLeave={() => video1Ref.current?.pause()}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <video ref={video1Ref} src="InaguracionKhuyay/video01.mp4" controls className="inauguracion-video" muted playsInline />
+                        </motion.div>
+                        <motion.div 
+                            className="inauguracion-video-wrapper"
+                            initial={{ x: 50, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            viewport={{ once: false, amount: 0.5 }}
+                            onViewportEnter={() => video2Ref.current?.play()}
+                            onViewportLeave={() => video2Ref.current?.pause()}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <video ref={video2Ref} src="InaguracionKhuyay/video02.mp4" controls className="inauguracion-video" muted playsInline />
+                        </motion.div>
                     </div>
                 </div>
             </section>
