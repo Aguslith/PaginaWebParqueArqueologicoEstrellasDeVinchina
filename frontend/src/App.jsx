@@ -2,6 +2,34 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Compass, Calendar, Star, MapPin, ArrowRight, Landmark, Droplets, Moon, Sun, ChevronLeft, ChevronRight, Eye, Shield, Heart, Menu, X, Facebook, Twitter, Instagram, BookOpen } from 'lucide-react';
 
+const playClickSound = () => {
+    try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        
+        osc.type = 'sine';
+        const now = ctx.currentTime;
+        
+        // Very quick, clean high-end tap/pop sound
+        osc.frequency.setValueAtTime(400, now);
+        osc.frequency.exponentialRampToValueAtTime(150, now + 0.08);
+        
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+        
+        osc.start(now);
+        osc.stop(now + 0.08);
+    } catch (e) {
+        console.warn("AudioContext block:", e);
+    }
+};
+
 const FaunaCard = ({ animal }) => {
     const [viewMode, setViewMode] = useState('sculpture'); // 'sculpture' or 'real'
 
@@ -41,13 +69,13 @@ const FaunaCard = ({ animal }) => {
                     <div className="image-view-toggle">
                         <button 
                             className={`toggle-btn ${viewMode === 'sculpture' ? 'active' : ''}`}
-                            onClick={() => setViewMode('sculpture')}
+                            onClick={() => { playClickSound(); setViewMode('sculpture'); }}
                         >
                             <Landmark size={12} /> Escultura
                         </button>
                         <button 
                             className={`toggle-btn ${viewMode === 'real' ? 'active' : ''}`}
-                            onClick={() => setViewMode('real')}
+                            onClick={() => { playClickSound(); setViewMode('real'); }}
                         >
                             <Eye size={12} /> Animal Real
                         </button>
@@ -150,7 +178,7 @@ const SobreNosotrosView = ({ navigateTo }) => {
             <div className="container">
                 {/* Back Link */}
                 <div className="back-link-container">
-                    <button onClick={() => navigateTo('home')} className="back-to-home-btn">
+                    <button onClick={() => { playClickSound(); navigateTo('home', ''); }} className="back-to-home-btn">
                         ← Volver al Inicio
                     </button>
                 </div>
@@ -575,25 +603,25 @@ const App = () => {
         <div className="app-container">
             {/* Navbar */}
             <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-                <div className="navbar-logo" onClick={() => navigateTo('home', '')} style={{ cursor: 'pointer' }}>
+                <div className="navbar-logo" onClick={() => { playClickSound(); navigateTo('home', ''); }} style={{ cursor: 'pointer' }}>
                     <img src="logokhuyay.JPG" alt="Logo Parque Pacha Khuyay" className="logo-image" />
                     <span className="logo-text">PARQUE PACHA KHUYAY</span>
                 </div>
                 
                 <div className="nav-links">
-                    <a href="#" onClick={(e) => { e.preventDefault(); navigateTo('home', ''); }} className={currentView === 'home' && !hash ? 'active-nav-link' : ''}>Inicio</a>
-                    <a href="#/sobre-nosotros" onClick={(e) => { e.preventDefault(); navigateTo('sobre-nosotros'); }} className={currentView === 'sobre-nosotros' ? 'active-nav-link' : ''}>Sobre nosotros</a>
-                    <a href="#que-es" onClick={(e) => { e.preventDefault(); navigateTo('home', '#que-es'); }} className={currentView === 'home' && hash === '#que-es' ? 'active-nav-link' : ''}>¿Qué significa?</a>
-                    <a href="#fauna" onClick={(e) => { e.preventDefault(); navigateTo('home', '#fauna'); }} className={currentView === 'home' && hash === '#fauna' ? 'active-nav-link' : ''}>Fauna</a>
-                    <a href="#simbolismo" onClick={(e) => { e.preventDefault(); navigateTo('home', '#simbolismo'); }} className={currentView === 'home' && hash === '#simbolismo' ? 'active-nav-link' : ''}>Simbolismo</a>
-                    <a href="#geoglifos" onClick={(e) => { e.preventDefault(); navigateTo('home', '#geoglifos'); }} className={currentView === 'home' && hash === '#geoglifos' ? 'active-nav-link' : ''}>Geoglifos</a>
-                    <a href="#ubicacion" onClick={(e) => { e.preventDefault(); navigateTo('home', '#ubicacion'); }} className={currentView === 'home' && hash === '#ubicacion' ? 'active-nav-link' : ''}>Ubicación</a>
-                    <a href="#inauguracion" className="nav-inauguracion" onClick={(e) => { e.preventDefault(); navigateTo('home', '#inauguracion'); }}>¡Inauguración!</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', ''); }} className={currentView === 'home' && !hash ? 'active-nav-link' : ''}>Inicio</a>
+                    <a href="#/sobre-nosotros" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('sobre-nosotros'); }} className={currentView === 'sobre-nosotros' ? 'active-nav-link' : ''}>Sobre nosotros</a>
+                    <a href="#que-es" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#que-es'); }} className={currentView === 'home' && hash === '#que-es' ? 'active-nav-link' : ''}>¿Qué significa?</a>
+                    <a href="#fauna" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#fauna'); }} className={currentView === 'home' && hash === '#fauna' ? 'active-nav-link' : ''}>Fauna</a>
+                    <a href="#simbolismo" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#simbolismo'); }} className={currentView === 'home' && hash === '#simbolismo' ? 'active-nav-link' : ''}>Simbolismo</a>
+                    <a href="#geoglifos" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#geoglifos'); }} className={currentView === 'home' && hash === '#geoglifos' ? 'active-nav-link' : ''}>Geoglifos</a>
+                    <a href="#ubicacion" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#ubicacion'); }} className={currentView === 'home' && hash === '#ubicacion' ? 'active-nav-link' : ''}>Ubicación</a>
+                    <a href="#inauguracion" className="nav-inauguracion" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#inauguracion'); }}>¡Inauguración!</a>
                 </div>
 
                 <button 
                     className="mobile-menu-btn" 
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    onClick={() => { playClickSound(); setIsMenuOpen(!isMenuOpen); }}
                     aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
                 >
                     {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
@@ -601,14 +629,14 @@ const App = () => {
             </nav>
 
             <div className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigateTo('home', ''); }}>Inicio</a>
-                <a href="#/sobre-nosotros" onClick={(e) => { e.preventDefault(); navigateTo('sobre-nosotros'); }}>Sobre nosotros</a>
-                <a href="#que-es" onClick={(e) => { e.preventDefault(); navigateTo('home', '#que-es'); }}>¿Qué significa?</a>
-                <a href="#fauna" onClick={(e) => { e.preventDefault(); navigateTo('home', '#fauna'); }}>Fauna</a>
-                <a href="#simbolismo" onClick={(e) => { e.preventDefault(); navigateTo('home', '#simbolismo'); }}>Simbolismo</a>
-                <a href="#geoglifos" onClick={(e) => { e.preventDefault(); navigateTo('home', '#geoglifos'); }}>Geoglifos</a>
-                <a href="#ubicacion" onClick={(e) => { e.preventDefault(); navigateTo('home', '#ubicacion'); }}>Ubicación</a>
-                <a href="#inauguracion" className="nav-inauguracion-mobile" onClick={(e) => { e.preventDefault(); navigateTo('home', '#inauguracion'); }}>¡Inauguración!</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', ''); }}>Inicio</a>
+                <a href="#/sobre-nosotros" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('sobre-nosotros'); }}>Sobre nosotros</a>
+                <a href="#que-es" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#que-es'); }}>¿Qué significa?</a>
+                <a href="#fauna" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#fauna'); }}>Fauna</a>
+                <a href="#simbolismo" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#simbolismo'); }}>Simbolismo</a>
+                <a href="#geoglifos" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#geoglifos'); }}>Geoglifos</a>
+                <a href="#ubicacion" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#ubicacion'); }}>Ubicación</a>
+                <a href="#inauguracion" className="nav-inauguracion-mobile" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#inauguracion'); }}>¡Inauguración!</a>
             </div>
 
             {currentView === 'home' ? (
@@ -630,7 +658,7 @@ const App = () => {
                                 Bienvenidos, esta es la página de un lugar encantador:<br/><br/>
                                 <strong>Pacha Khuyay</strong> significa <em>amor a la tierra, a la naturaleza y a su gente</em>.
                             </p>
-                            <a href="#fauna" onClick={(e) => { e.preventDefault(); navigateTo('home', '#fauna'); }} className="btn-red">
+                            <a href="#fauna" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#fauna'); }} className="btn-red">
                                 VER LAS ESCULTURAS <ArrowRight size={18} aria-hidden="true" />
                             </a>
                         </motion.div>
@@ -781,7 +809,7 @@ const App = () => {
                     >
                         <div style={{ display: 'flex', justifyContent: 'center', margin: '40px 0' }}>
                             <button 
-                                onClick={() => navigateTo('sobre-nosotros')}
+                                onClick={() => { playClickSound(); navigateTo('sobre-nosotros'); }}
                                 className="btn-red"
                                 style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}
                             >
@@ -1134,7 +1162,7 @@ const App = () => {
                             <h4>Parque Pacha Khuyay</h4>
                             <p className="map-info-subtitle">La Rioja, Vinchina</p>
                             <p className="map-info-text">Localización: 3 km al NW de San José de Vinchina. Se recomienda visita guiada para interpretar los geoglifos.</p>
-                            <a href="https://www.google.com/maps?q=-28.7517,-68.2106" target="_blank" className="btn-red">
+                            <a href="https://www.google.com/maps?q=-28.7517,-68.2106" target="_blank" rel="noopener noreferrer" onClick={() => playClickSound()} className="btn-red">
                                 CÓMO LLEGAR
                             </a>
                         </div>
@@ -1150,24 +1178,24 @@ const App = () => {
             <footer className="footer">
                 <div className="container">
                     <div className="footer-grid">
-                        <div className="navbar-logo" onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>
+                        <div className="navbar-logo" onClick={() => { playClickSound(); navigateTo('home', ''); }} style={{ cursor: 'pointer' }}>
                             <img src="logokhuyay.JPG" alt="Logo Parque Pacha Khuyay" className="logo-image" />
                             <span className="logo-text">PACHA KHUYAY</span>
                         </div>
                         <div className="footer-links">
-                            <a href="#que-es" onClick={(e) => { e.preventDefault(); navigateTo('home', '#que-es'); }}>YACIMIENTO</a>
-                            <a href="#geoglifos" onClick={(e) => { e.preventDefault(); navigateTo('home', '#geoglifos'); }}>GALERÍA</a>
-                            <a href="#fauna" onClick={(e) => { e.preventDefault(); navigateTo('home', '#fauna'); }}>FAUNA</a>
-                            <a href="#/sobre-nosotros" onClick={(e) => { e.preventDefault(); navigateTo('sobre-nosotros'); }}>SOBRE NOSOTROS</a>
+                            <a href="#que-es" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#que-es'); }}>YACIMIENTO</a>
+                            <a href="#geoglifos" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#geoglifos'); }}>GALERÍA</a>
+                            <a href="#fauna" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('home', '#fauna'); }}>FAUNA</a>
+                            <a href="#/sobre-nosotros" onClick={(e) => { e.preventDefault(); playClickSound(); navigateTo('sobre-nosotros'); }}>SOBRE NOSOTROS</a>
                         </div>
                         <div className="footer-socials">
-                            <a href="https://www.facebook.com/share/p/18Vajpoi9o/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <a href="https://www.facebook.com/share/p/18Vajpoi9o/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" onClick={() => playClickSound()} aria-label="Facebook">
                                 <Facebook size={24} />
                             </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X">
+                            <a href="#" target="_blank" rel="noopener noreferrer" onClick={() => playClickSound()} aria-label="X">
                                 <Twitter size={24} />
                             </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <a href="#" target="_blank" rel="noopener noreferrer" onClick={() => playClickSound()} aria-label="Instagram">
                                 <Instagram size={24} />
                             </a>
                         </div>
