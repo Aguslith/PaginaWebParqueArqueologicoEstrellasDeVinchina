@@ -50,6 +50,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   transition: all 0.4s var(--transition-smooth);
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
@@ -120,11 +121,25 @@ body {
 @media (min-width: 1200px) {
   .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 12px;
     align-items: center;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .logo-text {
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .nav-links {
+    gap: 20px;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
   }
 }
@@ -1853,6 +1868,10 @@ section {
   height: 100%;
   position: relative;
   overflow: hidden;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sculpture-img,
@@ -1862,7 +1881,8 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 12px;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
